@@ -4,13 +4,8 @@ namespace app\modules\autobasebuy\models;
 
 use yii\db\ActiveRecord;
 
-class CarOptionValue extends ActiveRecord {
-
-    public static function model($className = __CLASS__)
-    {
-        return parent::model($className);
-    }
-
+class CarOptionValue extends ActiveRecord
+{
     public static function tableName()
     {
         return 'car_option_value';
