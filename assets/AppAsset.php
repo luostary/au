@@ -23,6 +23,9 @@ class AppAsset extends AssetBundle
         'css/site.css',
     ];
     public $js = [
+        '/elementauto/js/superfish.js?ver=4.4.31',
+        '/elementauto/js/jquery.touchSwipe.min.js',
+        '/elementauto/js/jquery.cycle.all.js?ver=4.4.31',
     ];
     public $depends = [
         'yii\web\YiiAsset',
