@@ -52,6 +52,7 @@ $config = [
             ],
         ],
         */
+        'mailer' => $mailer,
     ],
     'params' => $params,
     'modules' => [
