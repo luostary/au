@@ -1,6 +1,6 @@
 <?php
 
-return [
+$params = [
     'class' => 'yii\db\Connection',
     'dsn' => 'mysql:host=localhost;dbname=yii2basic',
     'username' => 'root',
@@ -12,3 +12,8 @@ return [
     //'schemaCacheDuration' => 60,
     //'schemaCache' => 'cache',
 ];
+
+if (file_exists(__DIR__ . '/private/db.php')) {
+    $params = require (__DIR__ . '/private/db.php');
+}
+return $params;
