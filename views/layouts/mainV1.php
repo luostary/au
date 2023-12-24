@@ -153,54 +153,9 @@ AppAsset::register($this);
                 </div>
                 <!-- / Search -->
 
-                <!-- Main Menu -->
-                <nav id="main-menu" class="site-navigation mobile-menu" role="navigation">
-                    <div class="menu-themedefault-container ">
-                        <ul class="nav-menu sf-js-enabled">
-                            <li><a href="/">Home</a></li>
-                            <li class="page_item page-item-1779"><a href="/site/contact">Contact
-                                    Us</a></li>
-                            <li class="page_item page-item-5 page_item_has_children"><a
-                                        href="#" class="sf-with-ul">Taxi lists<span class="sf-sub-indicator"> »</span></a>
-                                <ul class="children" style="display: none; visibility: hidden;">
-                                    <li class="page_item page-item-1133"><a
-                                                href="/site/driver">Driver</a>
-                                    </li>
-                                    <li class="page_item page-item-1134"><a
-                                                href="/site/order">Order</a></li>
-                                </ul>
-                            </li>
-                            <li class="page_item page-item-146"><a href="/site/about">About Us</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div id="menu-trigger"></div>
-                </nav>
-                <!-- / Main Menu -->
+                <?php echo \app\widgets\menuMain::widget() ?>
 
-                <!-- extra Menu -->
-                <nav id="extra-menu" class="site-navigation" role="navigation">
-                    <div class="menu-themedefault-container ">
-                        <ul class="nav-menu sf-js-enabled">
-                            <li><a href="/">Home</a></li>
-                            <li class="page_item page-item-1779"><a href="/site/contact">Contact
-                                    Us</a></li>
-                            <li class="page_item page-item-5 page_item_has_children"><a
-                                        href="#" class="sf-with-ul">Taxi lists<span class="sf-sub-indicator"> »</span></a>
-                                <ul class="children" style="display: none; visibility: hidden;">
-                                    <li class="page_item page-item-1133"><a
-                                                href="/site/driver">Driver</a>
-                                    </li>
-                                    <li class="page_item page-item-1134"><a
-                                                href="/site/order">Order</a></li>
-                                </ul>
-                            </li>
-                            <li class="page_item page-item-146"><a href="/site/about">About</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-                <!-- / extra Menu -->
+                <?php echo \app\widgets\menuExtra::widget() ?>
 
                 <div class="clear"></div>
             </div>
