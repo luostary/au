@@ -87,9 +87,9 @@ class AutoController extends \yii\web\Controller
 
             if ($idCarType !== null) {
                 $carMarkList = CarMark::model()->findAllByAttributes(array('id_car_type' => $idCarType));
-                $result = CHtml::tag('option', ['value' => 0], CHtml::encode('Выберите Марку'), true);
+                $result = Html::tag('option', ['value' => 0], Html::encode('Выберите Марку'), true);
                 foreach ($carMarkList as $carMark) {
-                    $result .= CHtml::tag('option', ['value' => $carMark->primaryKey], CHtml::encode($carMark->name), true);
+                    $result .= Html::tag('option', ['value' => $carMark->primaryKey], Html::encode($carMark->name), true);
                 }
                 echo $result;
             }
@@ -101,9 +101,9 @@ class AutoController extends \yii\web\Controller
             $idCarMark = Yii::app()->request->getParam('id_car_mark');
             if ($idCarMark !== null) {
                 $carModelList = CarModel::model()->findAllByAttributes(array('id_car_mark' => $idCarMark));
-                $result = CHtml::tag('option', ['value' => 0], CHtml::encode('Выберите Модель'), true);
+                $result = Html::tag('option', ['value' => 0], Html::encode('Выберите Модель'), true);
                 foreach ($carModelList as $carModel) {
-                    $result .= CHtml::tag('option', ['value' => $carModel->primaryKey], CHtml::encode($carModel->name), true);
+                    $result .= Html::tag('option', ['value' => $carModel->primaryKey], Html::encode($carModel->name), true);
                 }
                 echo $result;
             }
@@ -115,15 +115,15 @@ class AutoController extends \yii\web\Controller
             $idCarModel = Yii::app()->request->getParam('id_car_model');
             if ($idCarModel !== null) {
                 $carGenerationList = CarGeneration::model()->findAllByAttributes(array('id_car_model' => $idCarModel));
-                $result = CHtml::tag('option', ['value' => 0], CHtml::encode('-'), true);
-                if ( count($carGenerationList) ) $result = CHtml::tag('option', ['value' => 0], CHtml::encode('Выберите Поколение'), true);
+                $result = Html::tag('option', ['value' => 0], Html::encode('-'), true);
+                if ( count($carGenerationList) ) $result = Html::tag('option', ['value' => 0], Html::encode('Выберите Поколение'), true);
                 foreach ($carGenerationList as $carGeneration) {
                     $yearStr = '';
                     if ( $carGeneration->year_begin ){
                         $yearStr = " [".$carGeneration->year_begin." - ".( $carGeneration->year_end ? $carGeneration->year_end : "н.в." )."]";
                     }
 
-                    $result .= CHtml::tag('option', ['value' => $carGeneration->primaryKey], CHtml::encode($carGeneration->name.$yearStr), true);
+                    $result .= Html::tag('option', ['value' => $carGeneration->primaryKey], Html::encode($carGeneration->name.$yearStr), true);
                 }
                 echo $result;
             }
@@ -150,9 +150,9 @@ class AutoController extends \yii\web\Controller
 
             $carSerieList = CarSerie::findAll($cr);
 
-            $result = CHtml::tag('option', ['value' => 0], CHtml::encode('Выберите Серию'), true);
+            $result = Html::tag('option', ['value' => 0], Html::encode('Выберите Серию'), true);
             foreach ($carSerieList as $carSerie) {
-                $result .= CHtml::tag('option', ['value' => $carSerie->primaryKey], CHtml::encode($carSerie->name), true);
+                $result .= Html::tag('option', ['value' => $carSerie->primaryKey], Html::encode($carSerie->name), true);
             }
             echo $result;
         }
@@ -163,9 +163,9 @@ class AutoController extends \yii\web\Controller
             $idCarSerie = Yii::app()->request->getParam('id_car_serie');
             if ($idCarSerie !== null) {
                 $carModificationList = CarModification::model()->findAllByAttributes(array('id_car_serie' => $idCarSerie));
-                $result = CHtml::tag('option', ['value' => 0], CHtml::encode('Выберите Модификацию'), true);
+                $result = Html::tag('option', ['value' => 0], Html::encode('Выберите Модификацию'), true);
                 foreach ($carModificationList as $carModification) {
-                    $result .= CHtml::tag('option', ['value' => $carModification->primaryKey], CHtml::encode($carModification->name), true);
+                    $result .= Html::tag('option', ['value' => $carModification->primaryKey], Html::encode($carModification->name), true);
                 }
                 echo $result;
             }
@@ -177,10 +177,10 @@ class AutoController extends \yii\web\Controller
             $idCarModification = Yii::app()->request->getParam('id_car_modification');
             if ($idCarModification !== null) {
                 $carEquipmentList = CarEquipment::model()->findAllByAttributes(array('id_car_modification' => $idCarModification));
-                $result = CHtml::tag('option', ['value' => 0], CHtml::encode('-'), true);
-                if ( count($carEquipmentList) ) $result = CHtml::tag('option', ['value' => 0], CHtml::encode('Выберите Комлпектацию'), true);
+                $result = Html::tag('option', ['value' => 0], Html::encode('-'), true);
+                if ( count($carEquipmentList) ) $result = Html::tag('option', ['value' => 0], Html::encode('Выберите Комлпектацию'), true);
                 foreach ($carEquipmentList as $carEquipment) {
-                    $result .= CHtml::tag('option', ['value' => $carEquipment->primaryKey], CHtml::encode($carEquipment->name), true);
+                    $result .= Html::tag('option', ['value' => $carEquipment->primaryKey], Html::encode($carEquipment->name), true);
                 }
                 echo $result;
             }
@@ -195,7 +195,7 @@ class AutoController extends \yii\web\Controller
                 $result = '';
                 foreach ($carCharacteristicValueList as $carCharacteristicValue) {
                     $charName = $carCharacteristicValue->car_characteristic->name;
-                    $result .= '<div class="row"><div class="col-md-6">'.CHtml::encode($charName).'</div><div class="col-md-6">'.CHtml::encode($carCharacteristicValue->value).' '.CHtml::encode($carCharacteristicValue->unit).'</div></div>';
+                    $result .= '<div class="row"><div class="col-md-6">'.Html::encode($charName).'</div><div class="col-md-6">'.Html::encode($carCharacteristicValue->value).' '.Html::encode($carCharacteristicValue->unit).'</div></div>';
                 }
                 echo $result;
             }
@@ -210,7 +210,7 @@ class AutoController extends \yii\web\Controller
                 $result = '';
                 foreach ($carOptionValueList as $carOptionValue) {
                     $optionName = $carOptionValue->car_option->name;
-                    $result .= '<div class="row"><div class="col-md-6">'.CHtml::encode($optionName).'</div><div class="col-md-6">'.CHtml::encode( $carOptionValue->is_base ? 'стандартная' : 'дополнительная').'</div></div>';
+                    $result .= '<div class="row"><div class="col-md-6">'.Html::encode($optionName).'</div><div class="col-md-6">'.Html::encode( $carOptionValue->is_base ? 'стандартная' : 'дополнительная').'</div></div>';
                 }
                 echo $result;
             }
