@@ -11,6 +11,7 @@ use app\modules\autobasebuy\models\CarModel;
 use app\modules\autobasebuy\models\CarModification;
 use app\modules\autobasebuy\models\CarOptionValue;
 use app\modules\autobasebuy\models\CarSerie;
+use yii\helpers\Html;
 
 class AutoController extends \yii\web\Controller
 {
