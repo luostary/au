@@ -1,4 +1,9 @@
 <?php
+
+use app\modules\autobasebuy\models\CarType;
+
+/** @var $carTypeList CarType[] */
+
 $this->title = 'Интерактивный пример работы базы данных';
 ?>
 <div class="b-interaction-example">
@@ -9,7 +14,7 @@ $this->title = 'Интерактивный пример работы базы д
                 <div class="col-sm-8">
                     <?php
                     $carTypeListData = \yii\helpers\ArrayHelper::map($carTypeList, 'id_car_type', 'name');
-                    echo \yii\helpers\Html::dropDownList('carType', '', $carTypeListData, array(
+                    echo \yii\helpers\Html::dropDownList('carType', '', array_merge(['prompt' => ''], $carTypeListData), array(
                         'empty' => Yii::t('app', 'Укажите вид транспорта'),
                         'ajax' => array(
                             'type' => 'GET',

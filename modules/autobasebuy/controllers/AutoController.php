@@ -60,13 +60,11 @@ class AutoController extends \yii\web\Controller
 
         $carTypeList = null;
         if ( $base && count($baseIdArray) ) {
-            $carTypeList = CarType::find()->all(
-                'id_car_type IN ('.implode(',', $baseIdArray).')',
-                []
-            );
+            $carTypeList = CarType::find()->andWhere([
+                'IN', 'id_car_type', $baseIdArray
+            ])->all();
         } else {
-//            $carTypeList = CarType::find()->all();
-            $carTypeList = CarType::findAll([]);
+            $carTypeList = CarType::find()->all();
         }
 
         return $this->render('index', array(
