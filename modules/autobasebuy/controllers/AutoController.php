@@ -12,6 +12,7 @@ use app\modules\autobasebuy\models\CarModification;
 use app\modules\autobasebuy\models\CarOptionValue;
 use app\modules\autobasebuy\models\CarSerie;
 use yii\helpers\Html;
+use Yii;
 
 class AutoController extends \yii\web\Controller
 {
@@ -81,8 +82,8 @@ class AutoController extends \yii\web\Controller
     }
 
     public function actionGetMarkList(){
-        if (Yii::app()->request->isAjaxRequest && $this->checkHost() ) {
-            $idCarType = Yii::app()->request->getParam('id_car_type');
+        if (Yii::$app->request->isAjax && $this->checkHost() ) {
+            $idCarType = Yii::$app->request->getParam('id_car_type');
 
             if ($idCarType !== null) {
                 $carMarkList = CarMark::model()->findAllByAttributes(array('id_car_type' => $idCarType));
@@ -96,8 +97,8 @@ class AutoController extends \yii\web\Controller
     }
 
     public function actionGetModelList(){
-        if (Yii::app()->request->isAjaxRequest && $this->checkHost()) {
-            $idCarMark = Yii::app()->request->getParam('id_car_mark');
+        if (Yii::$app->request->isAjaxRequest && $this->checkHost()) {
+            $idCarMark = Yii::$app->request->getParam('id_car_mark');
             if ($idCarMark !== null) {
                 $carModelList = CarModel::model()->findAllByAttributes(array('id_car_mark' => $idCarMark));
                 $result = Html::tag('option', ['value' => 0], Html::encode('Выберите Модель'), true);
@@ -110,8 +111,8 @@ class AutoController extends \yii\web\Controller
     }
 
     public function actionGetGenerationList(){
-        if (Yii::app()->request->isAjaxRequest && $this->checkHost()) {
-            $idCarModel = Yii::app()->request->getParam('id_car_model');
+        if (Yii::$app->request->isAjaxRequest && $this->checkHost()) {
+            $idCarModel = Yii::$app->request->getParam('id_car_model');
             if ($idCarModel !== null) {
                 $carGenerationList = CarGeneration::model()->findAllByAttributes(array('id_car_model' => $idCarModel));
                 $result = Html::tag('option', ['value' => 0], Html::encode('-'), true);
@@ -130,9 +131,9 @@ class AutoController extends \yii\web\Controller
     }
 
     public function actionGetSerieList(){
-        if (Yii::app()->request->isAjaxRequest && $this->checkHost()) {
-            $idCarModel = Yii::app()->request->getParam('id_car_model');
-            $idCarGeneration = Yii::app()->request->getParam('id_car_generation');
+        if (Yii::$app->request->isAjaxRequest && $this->checkHost()) {
+            $idCarModel = Yii::$app->request->getParam('id_car_model');
+            $idCarGeneration = Yii::$app->request->getParam('id_car_generation');
 
             if (( $idCarModel === null ) && ( $idCarGeneration === null )) return;
 
@@ -158,8 +159,8 @@ class AutoController extends \yii\web\Controller
     }
 
     public function actionGetModificationList(){
-        if (Yii::app()->request->isAjaxRequest && $this->checkHost()) {
-            $idCarSerie = Yii::app()->request->getParam('id_car_serie');
+        if (Yii::$app->request->isAjaxRequest && $this->checkHost()) {
+            $idCarSerie = Yii::$app->request->getParam('id_car_serie');
             if ($idCarSerie !== null) {
                 $carModificationList = CarModification::model()->findAllByAttributes(array('id_car_serie' => $idCarSerie));
                 $result = Html::tag('option', ['value' => 0], Html::encode('Выберите Модификацию'), true);
@@ -172,8 +173,8 @@ class AutoController extends \yii\web\Controller
     }
 
     public function actionGetEquipmentList(){
-        if (Yii::app()->request->isAjaxRequest && $this->checkHost()) {
-            $idCarModification = Yii::app()->request->getParam('id_car_modification');
+        if (Yii::$app->request->isAjaxRequest && $this->checkHost()) {
+            $idCarModification = Yii::$app->request->getParam('id_car_modification');
             if ($idCarModification !== null) {
                 $carEquipmentList = CarEquipment::model()->findAllByAttributes(array('id_car_modification' => $idCarModification));
                 $result = Html::tag('option', ['value' => 0], Html::encode('-'), true);
@@ -187,8 +188,8 @@ class AutoController extends \yii\web\Controller
     }
 
     public function actionGetCharacteristicValueList(){
-        if (Yii::app()->request->isAjaxRequest && $this->checkHost()) {
-            $idCarModification = Yii::app()->request->getParam('id_car_modification');
+        if (Yii::$app->request->isAjaxRequest && $this->checkHost()) {
+            $idCarModification = Yii::$app->request->getParam('id_car_modification');
             if ($idCarModification !== null) {
                 $carCharacteristicValueList = CarCharacteristicValue::model()->with('car_characteristic')->findAllByAttributes(array('id_car_modification' => $idCarModification));
                 $result = '';
@@ -202,8 +203,8 @@ class AutoController extends \yii\web\Controller
     }
 
     public function actionGetOptionValueList(){
-        if (Yii::app()->request->isAjaxRequest && $this->checkHost()) {
-            $idCarEquipment = Yii::app()->request->getParam('id_car_equipment');
+        if (Yii::$app->request->isAjaxRequest && $this->checkHost()) {
+            $idCarEquipment = Yii::$app->request->getParam('id_car_equipment');
             if ($idCarEquipment !== null) {
                 $carOptionValueList = CarOptionValue::model()->with('car_option')->findAllByAttributes(array('id_car_equipment' => $idCarEquipment));
                 $result = '';
@@ -218,7 +219,7 @@ class AutoController extends \yii\web\Controller
 
     public function checkHost(){
         return true;
-        if ( Yii::app()->request->getUserHost() == self::VALID_HOST_NAME ) return true;
+        if ( Yii::$app->request->getUserHost() == self::VALID_HOST_NAME ) return true;
         else return false;
     }
 
