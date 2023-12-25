@@ -14,18 +14,24 @@ $this->title = 'Интерактивный пример работы базы д
                 <div class="col-sm-8">
                     <?php
                     $carTypeListData = \yii\helpers\ArrayHelper::map($carTypeList, 'id_car_type', 'name');
-                    echo \yii\helpers\Html::dropDownList('carType', '', array_merge(['prompt' => ''], $carTypeListData), array(
-                        'empty' => Yii::t('app', 'Укажите вид транспорта'),
-                        'ajax' => array(
-                            'type' => 'GET',
-                            'url' => \yii\helpers\Url::to('auto/getMarkList'),
-                            'update' => '#carMark',
-                            'data' => array(
-                                'id_car_type' => 'js:this.value',
-                            ),
-                        ),
-                        'class' => 'form-control',
-                    ));
+                    echo \kartik\select2\Select2::widget([
+                        'name' => 'car_type',
+                        'data' => ['prompt' => ''] + $carTypeListData,
+                        'hideSearch' => true,
+                        'pluginEvents' => [
+                            "change" => "function(a) {
+                                $.ajax({
+                                    url: '/autobasebuy/auto/get-mark-list',
+                                    data: {
+                                        'id_car_type': $(this).val(),
+                                    },
+                                    success: function (data) {
+                                        $('#carMark').html(data);
+                                    }
+                                });
+                            }",
+                        ],
+                    ]);
                     ?>
                 </div>
             </div>
@@ -34,6 +40,7 @@ $this->title = 'Интерактивный пример работы базы д
                 <div class="col-sm-8">
                     <?php
                     echo \yii\helpers\Html::dropDownList('carMark', '', [], array(
+                        'id' => 'carMark',
                         'empty' => Yii::t('app', '-'),
                         'ajax' => array(
                             'type' => 'GET',

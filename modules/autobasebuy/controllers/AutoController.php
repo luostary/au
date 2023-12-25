@@ -81,15 +81,15 @@ class AutoController extends \yii\web\Controller
         ));
     }
 
-    public function actionGetMarkList(){
+    public function actionGetMarkList($id_car_type){
         if (Yii::$app->request->isAjax && $this->checkHost() ) {
-            $idCarType = Yii::$app->request->getParam('id_car_type');
+            $idCarType = $id_car_type;
 
             if ($idCarType !== null) {
-                $carMarkList = CarMark::model()->findAllByAttributes(array('id_car_type' => $idCarType));
-                $result = Html::tag('option', ['value' => 0], Html::encode('Выберите Марку'), true);
+                $carMarkList = CarMark::find()->andWhere(array('id_car_type' => $idCarType))->all();
+                $result = Html::tag('option', Html::encode('Выберите Марку'), ['value' => 0]);
                 foreach ($carMarkList as $carMark) {
-                    $result .= Html::tag('option', ['value' => $carMark->primaryKey], Html::encode($carMark->name), true);
+                    $result .= Html::tag('option', Html::encode($carMark->name), ['value' => $carMark->primaryKey]);
                 }
                 echo $result;
             }
