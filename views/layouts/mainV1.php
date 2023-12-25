@@ -310,32 +310,7 @@ AppAsset::register($this);
             <div class="sidebar clearfix floating doFloat" style="width: 265px; top: 0px;">
                 <div id="smt_social_profiles-3" class="widget widget_smt_social_profiles">
 
-
-                    <a href="https://twitter.com/smthemes" target="_blank">
-                        <img title="Twitter" alt="Twitter"
-                             src="/elementauto/images/social-profiles/twitter.png"
-                             height="32" width="32">
-                    </a>
-                    <a href="http://facebook.com/smthemes" target="_blank">
-                        <img title="Facebook" alt="Facebook"
-                             src="/elementauto/images/social-profiles/facebook.png"
-                             height="32" width="32">
-                    </a>
-                    <a href="http://www.linkedin.com/" target="_blank">
-                        <img title="LinkedIn" alt="LinkedIn"
-                             src="/elementauto/images/social-profiles/linkedin.png"
-                             height="32" width="32">
-                    </a>
-                    <a href="http://smthemes.com/preview/feed/" target="_blank">
-                        <img title="RSS Feed" alt="RSS Feed"
-                             src="/elementauto/images/social-profiles/rss.png"
-                             height="32" width="32">
-                    </a>
-                    <a href="mailto:your@email.com" target="_blank">
-                        <img title="Email" alt="Email"
-                             src="/elementauto/images/social-profiles/email.png"
-                             height="32" width="32">
-                    </a>
+                    <?= \app\widgets\socialButtons::widget() ?>
 
                 </div>
 
