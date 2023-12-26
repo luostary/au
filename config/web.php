@@ -51,7 +51,7 @@ $config = [
         'user' => [
             'class' => 'dektrium\user\Module',
         ],
-        'autobasebuy' => [
+        'catalog' => [
             'class' => 'app\modules\autobasebuy\AutobasebuyModule',
         ],
     ],

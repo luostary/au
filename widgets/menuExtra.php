@@ -31,7 +31,7 @@ class menuExtra extends \yii\bootstrap4\Widget
                                             href="/site/order">Order</a></li>
                             </ul>
                         </li>
-                        <li class="page_item page-item-146"><a href="/site/about">About</a>
+                        <li class="page_item page-item-146"><a href="/catalog/auto">Catalog</a>
                         </li>
                     </ul>
                 </div>

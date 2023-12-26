@@ -21,7 +21,7 @@ $this->title = 'Интерактивный пример работы базы д
                         'pluginEvents' => [
                             "change" => "function(a) {
                                 $.ajax({
-                                    url: '/autobasebuy/auto/get-mark-list',
+                                    url: '/catalog/auto/get-mark-list',
                                     data: {
                                         'id_car_type': $(this).val(),
                                     },
@@ -197,12 +197,6 @@ $this->title = 'Интерактивный пример работы базы д
             </div>
         </div>
         <div class="col-sm-6 desc">
-            <div class="str"><h4>Раздел для разработчиков</h4></div>
-            <div class="str"><span class="label label-default">+ API для обновления баз данных</span></div>
-            <div class="str"><span class="label label-default">+ Инструкция по установке и импорту базы MySQL</span></div>
-            <div class="str"><span class="label label-default">+ Готовый модуль на Yii</span></div>
-            <div class="str"><a class="btn btn-primary" target="_blank" href="/autobasebuy/auto/sdk/">Перейти к AutoBasebuy SDK</a></div>
-            <div class="str"><a class="btn btn-primary" target="_blank" href="/api/auto/v1/">Описание API.Basebuy</a></div>
         </div>
     </div>
 
