@@ -4,8 +4,9 @@ use app\modules\autobasebuy\models\CarType;
 
 /** @var $carTypeList CarType[] */
 
-$this->title = 'Интерактивный пример работы базы данных';
+$this->title = 'Каталог';
 ?>
+<h1><?= $this->title ?></h1>
 <div class="b-interaction-example">
     <div class="row">
         <div class="col-sm-6 table-list">
@@ -39,23 +40,25 @@ $this->title = 'Интерактивный пример работы базы д
                 <div class="col-sm-4"><?php echo \yii\helpers\Html::label("Марка", "carMark"); ?></div>
                 <div class="col-sm-8">
                     <?php
-                    echo \yii\helpers\Html::dropDownList('carMark', '', [], array(
+                    echo \kartik\select2\Select2::widget([
                         'id' => 'carMark',
-                        'empty' => Yii::t('app', '-'),
-                        'ajax' => array(
-                            'type' => 'GET',
-                            'url' => \yii\helpers\Url::to('auto/getModelList'),
-                            'update' => '#carModel',
-                            'success' => 'function(html){ 
-                                $("#carModel").html(html);
-                                $("#carModelSerie").html(html);
-                            }',
-                            'data' => array(
-                                'id_car_mark' => 'js:this.value',
-                            ),
-                        ),
-                        'class' => 'form-control',
-                    ));
+                        'name' => 'car_mark',
+                        'data' => [],
+                        'hideSearch' => true,
+                        'pluginEvents' => [
+                            "change" => "function(a) {
+                                $.ajax({
+                                    url: '/catalog/auto/get-model-list',
+                                    data: {
+                                        'id_car_mark': $(this).val(),
+                                    },
+                                    success: function (data) {
+                                        $('#carModel').html(data);
+                                    }
+                                });
+                            }",
+                        ],
+                    ]);
                     ?>
                 </div>
             </div>
@@ -63,37 +66,50 @@ $this->title = 'Интерактивный пример работы базы д
                 <div class="col-sm-4"><?php echo \yii\helpers\Html::label("Модель", "carModel"); ?></div>
                 <div class="col-sm-8">
                     <?php
-                    echo \yii\helpers\Html::dropDownList('carModel', '', [], array(
-                        'empty' => Yii::t('app', '-'),
-                        'ajax' => array(
-                            'type' => 'GET',
-                            'url' => \yii\helpers\Url::to('auto/getGenerationList'),
-                            'update' => '#carGeneration',
-                            'success' => 'function(html){ 
-                                 $("#carGeneration").html(html);
-                                 $("#carModelSerie").val( $("#carModel").val() ).change();
-                            }',
-                            'data' => array(
-                                'id_car_model' => 'js:this.value',
-                            ),
-                        ),
-                        'class' => 'form-control',
-                    ));
+                    echo \kartik\select2\Select2::widget([
+                        'id' => 'carModel',
+                        'name' => 'car_model',
+                        'data' => [],
+                        'hideSearch' => true,
+                        'pluginEvents' => [
+                            "change" => "function(a) {
+                                $.ajax({
+                                    url: '/catalog/auto/get-generation-list',
+                                    data: {
+                                        'id_car_model': $(this).val(),
+                                    },
+                                    success: function (data) {
+                                        $('#carModelSerie').html(data);
+                                        
+                                        $('#carGeneration').html(data);
+                                        $('#carModelSerie').val( $('#carModel').val() ).change();
+                                    }
+                                });
+                            }",
+                        ],
+                    ]);
                     ?>
                     <?php
-                    echo \yii\helpers\Html::dropDownList('carModelSerie', '', [], array(
-                        'empty' => Yii::t('app', '-'),
-                        'ajax' => array(
-                            'type' => 'GET',
-                            'url' => \yii\helpers\Url::to('auto/getSerieList'),
-                            'update' => '#carSerie',
-                            'data' => array(
-                                'id_car_model' => 'js:this.value',
-                            ),
-                        ),
-                        'class' => 'form-control',
-                        'style' => 'display:none',
-                    ));
+                    \kartik\select2\Select2::widget([
+                        'id' => 'carModelSerie',
+                        'name' => 'car_model_serie',
+                        'data' => [],
+                        'hideSearch' => true,
+                        'pluginEvents' => [
+                            "change" => "function(a) {
+                                console.log($(this).val())
+                                $.ajax({
+                                    url: '/catalog/auto/get-serie-list',
+                                    data: {
+                                        'id_car_model': $(this).val(),
+                                    },
+                                    success: function (data) {
+                                        $('#carGeneration').html(data);
+                                    }
+                                });
+                            }",
+                        ],
+                    ]);
                     ?>
                 </div>
             </div>
@@ -102,18 +118,25 @@ $this->title = 'Интерактивный пример работы базы д
                 <div class="col-sm-4"><?php echo \yii\helpers\Html::label("Поколение", "carGeneration"); ?></div>
                 <div class="col-sm-8">
                     <?php
-                    echo \yii\helpers\Html::dropDownList('carGeneration', '', [], array(
-                        'empty' => Yii::t('app', '-'),
-                        'ajax' => array(
-                            'type' => 'GET',
-                            'url' => \yii\helpers\Url::to('auto/getSerieList'),
-                            'update' => '#carSerie',
-                            'data' => array(
-                                'id_car_generation' => 'js:this.value',
-                            ),
-                        ),
-                        'class' => 'form-control',
-                    ));
+                    echo \kartik\select2\Select2::widget([
+                        'id' => 'carGeneration',
+                        'name' => 'car_generation',
+                        'data' => [],
+                        'hideSearch' => true,
+                        'pluginEvents' => [
+                            "change" => "function(a) {
+                                $.ajax({
+                                    url: '/catalog/auto/get-serie-list',
+                                    data: {
+                                        'id_car_generation': $(this).val(),
+                                    },
+                                    success: function (data) {
+                                        $('#carSerie').html(data);
+                                    }
+                                });
+                            }",
+                        ],
+                    ]);
                     ?>
                 </div>
             </div>
@@ -121,22 +144,27 @@ $this->title = 'Интерактивный пример работы базы д
                 <div class="col-sm-4"><?php echo \yii\helpers\Html::label("Серия", "carSerie"); ?></div>
                 <div class="col-sm-8">
                     <?php
-                    echo \yii\helpers\Html::dropDownList('carSerie', '', [], array(
-                        'empty' => Yii::t('app', '-'),
-                        'ajax' => array(
-                            'type' => 'GET',
-                            'url' => \yii\helpers\Url::to('auto/getModificationList'),
-                            'update' => '#carModification',
-                            'success' => 'function(html){
-                                $("#carModification").html(html);
-                                $("#carModificationEquipment").html(html);
-                            }',
-                            'data' => array(
-                                'id_car_serie' => 'js:this.value',
-                            ),
-                        ),
-                        'class' => 'form-control',
-                    ));
+                    echo \kartik\select2\Select2::widget([
+                        'id' => 'carSerie',
+                        'name' => 'car_serie',
+                        'data' => [],
+                        'hideSearch' => true,
+                        'pluginEvents' => [
+                            "change" => "function(a) {
+                                $.ajax({
+                                    url: '/catalog/auto/get-modification-list',
+                                    data: {
+                                        'id_car_serie': $(this).val(),
+                                    },
+                                    success: function (data) {
+                                        $('#carModification').html(data);
+                                        $('#carModificationEquipment').html(data);
+                                    }
+                                });
+                            }",
+                        ],
+                    ]);
+
                     ?>
                 </div>
             </div>
@@ -144,35 +172,46 @@ $this->title = 'Интерактивный пример работы базы д
                 <div class="col-sm-4"><?php echo \yii\helpers\Html::label("Модификация", "carModification"); ?></div>
                 <div class="col-sm-8">
                     <?php
-                    echo \yii\helpers\Html::dropDownList('carModification', '', [], array(
-                        'empty' => Yii::t('app', '-'),
-                        'ajax' => array(
-                            'type' => 'GET',
-                            'url' => \yii\helpers\Url::to('auto/getCharacteristicValueList'),
-                            'update' => '#carCharValue',
-                            'success' => 'function(html){ 
-                                $("#carCharValue").html(html);
-                                $("#carModificationEquipment").val( $("#carModification").val() ).change();
-                            }',
-                            'data' => array(
-                                'id_car_modification' => 'js:this.value',
-                            ),
-                        ),
-                        'class' => 'form-control',
-                    ));
-                    echo \yii\helpers\Html::dropDownList('carModificationEquipment', '', [], array(
-                        'empty' => Yii::t('app', '-'),
-                        'ajax' => array(
-                            'type' => 'GET',
-                            'url' => \yii\helpers\Url::to('auto/getEquipmentList'),
-                            'update' => '#carEquipment',
-                            'data' => array(
-                                'id_car_modification' => 'js:this.value',
-                            ),
-                        ),
-                        'class' => 'form-control',
-                        'style' => 'display:none',
-                    ));
+                    echo \kartik\select2\Select2::widget([
+                        'id' => 'carModification',
+                        'name' => 'car_modification',
+                        'data' => [],
+                        'hideSearch' => true,
+                        'pluginEvents' => [
+                            "change" => "function(a) {
+                                $.ajax({
+                                    url: '/catalog/auto/get-characteristic-value-list',
+                                    data: {
+                                        'id_car_modification': $(this).val(),
+                                    },
+                                    success: function (html) {
+                                        $('#carCharValue').html(html);
+                                        $('#carModificationEquipment').val( $(this).val() ).change();
+                                        
+                                    }
+                                });
+                            }",
+                        ],
+                    ]);
+                    echo \kartik\select2\Select2::widget([
+                        'id' => 'carModificationEquipment',
+                        'name' => 'car_modification_equipment',
+                        'data' => [],
+                        'hideSearch' => true,
+                        'pluginEvents' => [
+                            "change" => "function(a) {
+                                $.ajax({
+                                    url: '/catalog/auto/get-equipment-list',
+                                    data: {
+                                        'id_car_modification': $(this).val(),
+                                    },
+                                    success: function (html) {
+                                        $('#carEquipment').html(html);
+                                    }
+                                });
+                            }",
+                        ],
+                    ]);
                     ?>
                 </div>
             </div>
@@ -180,18 +219,25 @@ $this->title = 'Интерактивный пример работы базы д
                 <div class="col-sm-4"><?php echo \yii\helpers\Html::label("Комплектация", "carEquipment"); ?></div>
                 <div class="col-sm-8">
                     <?php
-                    echo \yii\helpers\Html::dropDownList('carEquipment', '', [], array(
-                        'empty' => Yii::t('app', '-'),
-                        'ajax' => array(
-                            'type' => 'GET',
-                            'url' => \yii\helpers\Url::to('auto/getOptionValueList'),
-                            'update' => '#carOptionValue',
-                            'data' => array(
-                                'id_car_equipment' => 'js:this.value',
-                            ),
-                        ),
-                        'class' => 'form-control',
-                    ));
+                    echo \kartik\select2\Select2::widget([
+                        'id' => 'carEquipment',
+                        'name' => 'car_equipment',
+                        'data' => [],
+                        'hideSearch' => true,
+                        'pluginEvents' => [
+                            "change" => "function(a) {
+                                $.ajax({
+                                    url: '/catalog/auto/get-option-value-list',
+                                    data: {
+                                        'id_car_equipment': $(this).val(),
+                                    },
+                                    success: function (html) {
+                                        $('#carOptionValue').html(html);
+                                    }
+                                });
+                            }",
+                        ],
+                    ]);
                     ?>
                 </div>
             </div>

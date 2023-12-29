@@ -33,9 +33,13 @@ class CarOptionValue extends ActiveRecord
     {
         return array(
             'car_type' => array(self::BELONGS_TO, 'CarType', 'id_car_type'),
-            'car_option' => array(self::BELONGS_TO, 'CarOption', 'id_car_option'),
             'car_equipment' => array(self::BELONGS_TO, 'CarEquipment', 'id_car_equipment'),
         );
+    }
+
+    public function getCarOption()
+    {
+        return $this->hasOne(CarOption::class, ['id_car_option' => 'id_car_option']);
     }
 
     /**

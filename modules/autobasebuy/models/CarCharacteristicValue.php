@@ -36,8 +36,12 @@ class CarCharacteristicValue extends ActiveRecord
         return array(
             'car_type' => array(self::BELONGS_TO, 'CarType', 'id_car_type'),
             'car_modification'   => array(self::BELONGS_TO, 'CarModification', 'id_car_modification'),
-            'car_characteristic' => array(self::BELONGS_TO, 'CarCharacteristic', 'id_car_characteristic'),
         );
+    }
+
+    public function getCarCharacteristic()
+    {
+        return $this->hasOne(CarCharacteristic::class, ['id_car_characteristic' => 'id_car_characteristic']);
     }
 
     /**

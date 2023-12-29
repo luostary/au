@@ -96,123 +96,124 @@ class AutoController extends \yii\web\Controller
         }
     }
 
-    public function actionGetModelList(){
-        if (Yii::$app->request->isAjaxRequest && $this->checkHost()) {
-            $idCarMark = Yii::$app->request->getParam('id_car_mark');
+    public function actionGetModelList($id_car_mark){
+        if (Yii::$app->request->isAjax && $this->checkHost()) {
+            $idCarMark = $id_car_mark;
             if ($idCarMark !== null) {
-                $carModelList = CarModel::model()->findAllByAttributes(array('id_car_mark' => $idCarMark));
-                $result = Html::tag('option', ['value' => 0], Html::encode('Выберите Модель'), true);
+                $carModelList = CarModel::find()->andWhere(array('id_car_mark' => $idCarMark))->all();
+                $result = Html::tag('option', Html::encode('Выберите Модель'), ['value' => 0]);
                 foreach ($carModelList as $carModel) {
-                    $result .= Html::tag('option', ['value' => $carModel->primaryKey], Html::encode($carModel->name), true);
+                    $result .= Html::tag('option', Html::encode($carModel->name), ['value' => $carModel->primaryKey]);
                 }
                 echo $result;
             }
         }
     }
 
-    public function actionGetGenerationList(){
-        if (Yii::$app->request->isAjaxRequest && $this->checkHost()) {
-            $idCarModel = Yii::$app->request->getParam('id_car_model');
+    public function actionGetGenerationList($id_car_model){
+        if (Yii::$app->request->isAjax && $this->checkHost()) {
+            $idCarModel = $id_car_model;
             if ($idCarModel !== null) {
-                $carGenerationList = CarGeneration::model()->findAllByAttributes(array('id_car_model' => $idCarModel));
-                $result = Html::tag('option', ['value' => 0], Html::encode('-'), true);
-                if ( count($carGenerationList) ) $result = Html::tag('option', ['value' => 0], Html::encode('Выберите Поколение'), true);
+                $carGenerationList = CarGeneration::find()->andWhere(array('id_car_model' => $idCarModel))->all();
+                $result = Html::tag('option', Html::encode('-'), ['value' => 0]);
+                if ( count($carGenerationList) ) $result = Html::tag('option', Html::encode('Выберите Поколение'), ['value' => 0]);
                 foreach ($carGenerationList as $carGeneration) {
                     $yearStr = '';
                     if ( $carGeneration->year_begin ){
                         $yearStr = " [".$carGeneration->year_begin." - ".( $carGeneration->year_end ? $carGeneration->year_end : "н.в." )."]";
                     }
 
-                    $result .= Html::tag('option', ['value' => $carGeneration->primaryKey], Html::encode($carGeneration->name.$yearStr), true);
+                    $result .= Html::tag('option', Html::encode($carGeneration->name.$yearStr), ['value' => $carGeneration->primaryKey]);
                 }
                 echo $result;
             }
         }
     }
 
-    public function actionGetSerieList(){
-        if (Yii::$app->request->isAjaxRequest && $this->checkHost()) {
-            $idCarModel = Yii::$app->request->getParam('id_car_model');
-            $idCarGeneration = Yii::$app->request->getParam('id_car_generation');
+    public function actionGetSerieList($id_car_model = null, $id_car_generation = null){
+        if (Yii::$app->request->isAjax && $this->checkHost()) {
+            $idCarModel = $id_car_model;
+            $idCarGeneration = $id_car_generation;
 
             if (( $idCarModel === null ) && ( $idCarGeneration === null )) return;
 
-            $cr = new CDbCriteria;
+            $cr = [];
 
             if ($idCarModel !== null) {
-                $cr->addCondition('id_car_model = :ID_CAR_MODEL');
-                $cr->params[':ID_CAR_MODEL'] = $idCarModel;
+                $cr['id_car_model'] = $idCarModel;
             }
             if ($idCarGeneration !== null) {
-                $cr->addCondition('id_car_generation = :ID_CAR_GENERATION');
-                $cr->params[':ID_CAR_GENERATION'] = $idCarGeneration;
+                $cr['id_car_generation'] = $idCarGeneration;
             }
 
             $carSerieList = CarSerie::findAll($cr);
 
-            $result = Html::tag('option', ['value' => 0], Html::encode('Выберите Серию'), true);
+            $result = Html::tag('option', Html::encode('Выберите Серию'), ['value' => 0]);
             foreach ($carSerieList as $carSerie) {
-                $result .= Html::tag('option', ['value' => $carSerie->primaryKey], Html::encode($carSerie->name), true);
+                $result .= Html::tag('option', Html::encode($carSerie->name), ['value' => $carSerie->primaryKey]);
             }
             echo $result;
         }
     }
 
-    public function actionGetModificationList(){
-        if (Yii::$app->request->isAjaxRequest && $this->checkHost()) {
-            $idCarSerie = Yii::$app->request->getParam('id_car_serie');
+    public function actionGetModificationList($id_car_serie){
+        if (Yii::$app->request->isAjax && $this->checkHost()) {
+            $idCarSerie = $id_car_serie;
             if ($idCarSerie !== null) {
-                $carModificationList = CarModification::model()->findAllByAttributes(array('id_car_serie' => $idCarSerie));
-                $result = Html::tag('option', ['value' => 0], Html::encode('Выберите Модификацию'), true);
+                $carModificationList = CarModification::find()->andWhere(['id_car_serie' => $idCarSerie])->all();
+                $result = Html::tag('option', Html::encode('Выберите Модификацию'), ['value' => 0]);
                 foreach ($carModificationList as $carModification) {
-                    $result .= Html::tag('option', ['value' => $carModification->primaryKey], Html::encode($carModification->name), true);
+                    $result .= Html::tag('option', Html::encode($carModification->name), ['value' => $carModification->primaryKey]);
                 }
                 echo $result;
             }
         }
     }
 
-    public function actionGetEquipmentList(){
-        if (Yii::$app->request->isAjaxRequest && $this->checkHost()) {
-            $idCarModification = Yii::$app->request->getParam('id_car_modification');
+    public function actionGetEquipmentList($id_car_modification){
+        if (Yii::$app->request->isAjax && $this->checkHost()) {
+            $idCarModification = $id_car_modification;
             if ($idCarModification !== null) {
-                $carEquipmentList = CarEquipment::model()->findAllByAttributes(array('id_car_modification' => $idCarModification));
-                $result = Html::tag('option', ['value' => 0], Html::encode('-'), true);
-                if ( count($carEquipmentList) ) $result = Html::tag('option', ['value' => 0], Html::encode('Выберите Комлпектацию'), true);
+                $carEquipmentList = CarEquipment::find()->where(['id_car_modification' => $idCarModification])->all();
+                $result = Html::tag('option', Html::encode('-'), ['value' => 0]);
+                if ( count($carEquipmentList) ) $result = Html::tag('option', Html::encode('Выберите Комлпектацию'), ['value' => 0]);
                 foreach ($carEquipmentList as $carEquipment) {
-                    $result .= Html::tag('option', ['value' => $carEquipment->primaryKey], Html::encode($carEquipment->name), true);
+                    $result .= Html::tag('option', Html::encode($carEquipment->name), ['value' => $carEquipment->primaryKey]);
                 }
-                echo $result;
+                return $result;
             }
         }
     }
 
-    public function actionGetCharacteristicValueList(){
-        if (Yii::$app->request->isAjaxRequest && $this->checkHost()) {
-            $idCarModification = Yii::$app->request->getParam('id_car_modification');
+    public function actionGetCharacteristicValueList($id_car_modification){
+        if (Yii::$app->request->isAjax && $this->checkHost()) {
+            $idCarModification = $id_car_modification;
             if ($idCarModification !== null) {
-                $carCharacteristicValueList = CarCharacteristicValue::model()->with('car_characteristic')->findAllByAttributes(array('id_car_modification' => $idCarModification));
+                /** @var CarCharacteristicValue[] $carCharacteristicValueList */
+                $carCharacteristicValueList = CarCharacteristicValue::find()
+                    ->joinWith(['carCharacteristic'])
+                    ->andWhere(['id_car_modification' => $idCarModification])->all();
                 $result = '';
                 foreach ($carCharacteristicValueList as $carCharacteristicValue) {
-                    $charName = $carCharacteristicValue->car_characteristic->name;
+                    $charName = $carCharacteristicValue->carCharacteristic->name;
                     $result .= '<div class="row"><div class="col-md-6">'.Html::encode($charName).'</div><div class="col-md-6">'.Html::encode($carCharacteristicValue->value).' '.Html::encode($carCharacteristicValue->unit).'</div></div>';
                 }
-                echo $result;
+                return $result;
             }
         }
     }
 
-    public function actionGetOptionValueList(){
-        if (Yii::$app->request->isAjaxRequest && $this->checkHost()) {
-            $idCarEquipment = Yii::$app->request->getParam('id_car_equipment');
+    public function actionGetOptionValueList($id_car_equipment){
+        if (Yii::$app->request->isAjax && $this->checkHost()) {
+            $idCarEquipment = $id_car_equipment;
             if ($idCarEquipment !== null) {
-                $carOptionValueList = CarOptionValue::model()->with('car_option')->findAllByAttributes(array('id_car_equipment' => $idCarEquipment));
+                $carOptionValueList = CarOptionValue::find()->with('carOption')->andWhere(['id_car_equipment' => $idCarEquipment])->all();
                 $result = '';
                 foreach ($carOptionValueList as $carOptionValue) {
                     $optionName = $carOptionValue->car_option->name;
                     $result .= '<div class="row"><div class="col-md-6">'.Html::encode($optionName).'</div><div class="col-md-6">'.Html::encode( $carOptionValue->is_base ? 'стандартная' : 'дополнительная').'</div></div>';
                 }
-                echo $result;
+                return $result;
             }
         }
     }
