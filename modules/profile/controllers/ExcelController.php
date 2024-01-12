@@ -30,7 +30,7 @@ class ExcelController extends BaseController
 
         if (\Yii::$app->request->isPost) {
             $fileObject = UploadedFile::getInstanceByName('excel');
-            $pathToFile = \Yii::getAlias('@webroot/' . $fileObject->name);
+            $pathToFile = \Yii::getAlias('@runtime/' . $fileObject->name);
             $fileObject->saveAs($pathToFile);
 
             $reader = new Xlsx();
