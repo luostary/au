@@ -219,14 +219,14 @@ form .search-box input[type="submit"] {
 		position:relative;
 		z-index:3;
 	}
-	#extra-menu ul.nav-menu > li > a {
+	#extra-menu ul.nav-menu > li > a, #extra-menu ul.nav-menu > li button {
 		color:#b1b1b1;
 		padding: 26px 13px;
 		font-size:12px;
 		text-transform:uppercase;
 		font-family:'days_oneregular';
 	}
-	#extra-menu ul.nav-menu > li:hover > a {
+	#extra-menu ul.nav-menu > li:hover > a, #extra-menu ul.nav-menu > li:hover button {
 		color:#000;
 	}
 	header ul.nav-menu  > li ul {
