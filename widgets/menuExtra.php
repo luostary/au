@@ -20,10 +20,8 @@ class menuExtra extends \yii\bootstrap4\Widget
                     echo Nav::widget([
                         'options' => ['class' => 'nav-menu sf-js-enabled'],
                         'items' => [
-                            ['label' => 'Home', 'url' => ['/site/index']],
-                            ['label' => 'About', 'url' => ['/site/about']],
                             ['label' => 'Contact Us', 'url' => ['/site/contact']],
-                            ['label' => 'Catalog', 'url' => ['/catalog/auto']],
+                            ['label' => 'Catalog', 'url' => ['/catalog/auto'], 'visible' => !Yii::$app->user->isGuest],
 
                             Yii::$app->user->isGuest ? (
                             ['label' => 'Login', 'url' => ['/user/login']]
@@ -36,7 +34,8 @@ class menuExtra extends \yii\bootstrap4\Widget
                                 )
                                 . Html::endForm()
                                 . '</li>'
-                            )
+                            ),
+                            ['label' => 'Cabinet', 'url' => ['/profile'], 'visible' => !Yii::$app->user->isGuest],
                         ],
                     ]);
             echo '
