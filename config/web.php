@@ -54,6 +54,9 @@ $config = [
         'catalog' => [
             'class' => 'app\modules\autobasebuy\AutobasebuyModule',
         ],
+        'profile' => [
+            'class' => 'app\modules\profile\ProfileModule',
+        ],
     ],
 ];
 
