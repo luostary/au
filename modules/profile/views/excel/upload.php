@@ -10,6 +10,7 @@
     Here show upload from excel document
     <form method="POST" enctype="multipart/form-data">
         <input type="file" name="excel"/>
+        <a href="/upload-example.xlsx">Скачать пример файла</a>
         <input type="submit" />
     </form>
     <?php echo \yii\grid\GridView::widget([
