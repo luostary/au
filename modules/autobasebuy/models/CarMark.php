@@ -24,7 +24,7 @@ class CarMark extends ActiveRecord
     {
         return array(
             array('name', 'required'),
-            array('name, name_rus', 'length', 'max' => 255),
+            array(['name', 'name_rus'], 'length', 'max' => 255),
         );
     }
 

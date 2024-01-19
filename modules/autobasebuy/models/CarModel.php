@@ -24,8 +24,8 @@ class CarModel extends ActiveRecord
     {
         return array(
             array('name', 'required'),
-            array('id_car_mark, id_car_type', 'numerical', 'integerOnly' => true),
-            array('name, description', 'length', 'max' => 255),
+            array(['id_car_mark', 'id_car_type'], 'integer', 'integerOnly' => true),
+            array('name', 'string', 'max' => 255),
         );
     }
 
