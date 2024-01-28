@@ -28,17 +28,24 @@ class CarSerie extends ActiveRecord
         );
     }
 
-    /**
-     * @return array relational rules.
-     */
-    public function relations()
+    public function getCarType()
     {
-        return array(
-            'car_type' => array(self::BELONGS_TO, 'CarType', 'id_car_type'),
-            'car_model' => array(self::BELONGS_TO, 'CarModel', 'id_car_model'),
-            'car_generation' => array(self::BELONGS_TO, 'CarGeneration', 'id_car_generation'),
-            'car_modification_list' => array(self::HAS_MANY, 'CarModification', 'id_car_modification'),
-        );
+        return $this->hasOne(CarType::class, ['id_car_type' => 'id_car_type']);
+    }
+
+    public function getCarModel()
+    {
+        return $this->hasOne(CarModel::class, ['id_car_model' => 'id_car_model']);
+    }
+
+    public function getCarGeneration()
+    {
+        return $this->hasOne(CarGeneration::class, ['id_car_generation' => 'id_car_generation']);
+    }
+
+    public function getCarModification()
+    {
+        return $this->hasMany(CarModification::class, ['id_car_modification' => 'id_car_modification']);
     }
 
     /**
@@ -76,6 +83,21 @@ class CarSerie extends ActiveRecord
             ));
         }
         return $this;
+    }
+
+    public static function listAll($id_car_model = 0, $id_car_generation = 0)
+    {
+        $result = self::find()->select('name')->indexBy('id_car_serie');
+
+        if ($id_car_model) {
+            $result = $result->andWhere(['id_car_model' => $id_car_model]);
+        }
+
+        if ($id_car_generation) {
+            $result = $result->andWhere(['id_car_generation' => $id_car_generation]);
+        }
+
+        return $result->column();
     }
 
 }

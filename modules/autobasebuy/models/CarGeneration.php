@@ -77,4 +77,14 @@ class CarGeneration extends ActiveRecord
         return $this;
     }
 
+    public static function listAll($id_car_model = 0)
+    {
+        $result = self::find()->select('name')->indexBy('id_car_generation');
+
+        if ($id_car_model) {
+            $result = $result->andWhere(['id_car_model' => $id_car_model]);
+        }
+        return $result->column();
+    }
+
 }

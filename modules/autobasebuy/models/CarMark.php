@@ -73,4 +73,9 @@ class CarMark extends ActiveRecord
         return $this;
     }
 
+    public static function listAll()
+    {
+        return self::find()->select('name')->indexBy('id_car_mark')->column();
+    }
+
 }

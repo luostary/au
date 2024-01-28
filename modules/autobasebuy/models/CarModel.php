@@ -77,4 +77,14 @@ class CarModel extends ActiveRecord
         }
         return $this;
     }
+
+    public static function listAll($id_car_mark = 0)
+    {
+        $result = self::find()->select('name')->indexBy('id_car_model');
+
+        if ($id_car_mark) {
+            $result = $result->andWhere(['id_car_mark' => $id_car_mark]);
+        }
+        return $result->column();
+    }
 }
