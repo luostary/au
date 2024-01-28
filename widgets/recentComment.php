@@ -25,12 +25,12 @@ class recentComment extends \yii\bootstrap4\Widget
                         </div>
 
 
-                        <a href="https://demo2.smthemes.com/?p=1761#comment-35" class="comment_author">Anne
-                            Higgins</a>
+                        <a href="#comment-35" class="comment_author">Анна Хилько</a>
 
                         <div class="comment_text">
-                            Nullam imperdiet quis felis sit amet ultricies.
-                        </div>
+                            Покупали вместе с мужем первую машину, цена оправдала все ожидания. Все честно, без обмана. Предложили доп. услуги, но не настаивали.
+                            
+                            </div>
 
 
                     </li>
@@ -43,11 +43,11 @@ class recentComment extends \yii\bootstrap4\Widget
                         </div>
 
 
-                        <a href="https://demo2.smthemes.com/?p=1767#comment-34" class="comment_author">Ashley
-                            Clark</a>
+                        <a href="#comment-34" class="comment_author">Алексей
+                            Ларинов</a>
 
                         <div class="comment_text">
-                            Suspendisse eleifend leo sem, vel tincidunt elit
+                            Пожалуй это самая лучшая цена в Москве, ниже я не нашел!
                         </div>
 
 
@@ -61,10 +61,10 @@ class recentComment extends \yii\bootstrap4\Widget
                         </div>
 
 
-                        <a href="https://demo2.smthemes.com/?p=1770#comment-33" class="comment_author">Lee Tran</a>
+                        <a href="#comment-33" class="comment_author">Лилия Трикина</a>
 
                         <div class="comment_text">
-                            Pulvinar diam ac nulla semper
+                            Я покупаю не первый автомобиль, знаю как и где искать, в каких компаниях выбирать, а где лучше даже не связываться, потому что много мошенников, но эти ребята работаю честно 
                         </div>
 
 
@@ -78,11 +78,10 @@ class recentComment extends \yii\bootstrap4\Widget
                         </div>
 
 
-                        <a href="https://demo2.smthemes.com/?p=1770#comment-32" class="comment_author">Denise
-                            Roberts</a>
+                        <a href="#comment-32" class="comment_author">Денис Бертов</a>
 
                         <div class="comment_text">
-                            Maecenas sed risus molestie, tincidunt tellus in,
+                            Работаю таксистом на своём автомобиле, продал старую машину, купил новую в этой компании. Справедливые цены, никаких накруток, действительно смело можно всем рекомендовать
                         </div>
 
 
@@ -96,11 +95,11 @@ class recentComment extends \yii\bootstrap4\Widget
                         </div>
 
 
-                        <a href="https://demo2.smthemes.com/?p=1770#comment-31" class="comment_author">Doreen
-                            Lawrence</a>
+                        <a href="#comment-31" class="comment_author">Дарья
+                            Симонова</a>
 
                         <div class="comment_text">
-                            Curabitur interdum ipsum quis ipsum volutpat, eu
+                            Помоему они такие же перекупщики как и все
                         </div>
 
 

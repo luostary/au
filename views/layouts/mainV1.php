@@ -315,7 +315,7 @@ AppAsset::register($this);
                 </div>
 
                 <div id="smt_comments-2" class="widget widget_smt_comments">
-                    <div class="caption"><h4>Recent Comments</h4></div>
+                    <div class="caption"><h4>Отзывы покупателей</h4></div>
                     <?php echo \app\widgets\recentComment::widget() ?>
                 </div>
                 <div id="smt_posts-2" class="widget widget_smt_posts">
