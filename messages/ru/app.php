@@ -17,20 +17,24 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+    'Book now' => 'Забронировать',
+    'Cabinet' => 'Личный кабинет',
     'Captcha' => 'Введите проверочный код',
-    'Username' => 'Имя пользователя',
     'Create' => 'Создать',
-    'Update' => 'Обновить',
-    'Save' => 'Сохранить',
-    'Search' => 'Поиск',
-    'Upload' => 'Загрузить',
     'Delete' => 'Удалить',
-    'Reset' => 'Сбросить',
-    'not valid' => 'не валидный',
     'Description' => 'Описание',
     'Information saved successfully' => 'Информация успешно сохранена',
     'Information not saved' => 'Информация не сохранена',
+    'My cars' => 'Мои автомобили',
+    'Not valid' => 'Не валидный',
     'Phone' => 'Телефон',
+    'Reset' => 'Сбросить',
+    'Save' => 'Сохранить',
+    'Search' => 'Поиск',
+    'Update' => 'Обновить',
+    'Upload' => 'Загрузить',
+    'Upload excel' => 'Загрузить excel',
+    'Username' => 'Имя пользователя',
 
 
     'January' => 'Январь',
