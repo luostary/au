@@ -176,7 +176,7 @@ class AutoController extends \yii\web\Controller
             if ($idCarModification !== null) {
                 $carEquipmentList = CarEquipment::find()->where(['id_car_modification' => $idCarModification])->all();
                 $result = Html::tag('option', Html::encode('-'), ['value' => 0]);
-                if ( count($carEquipmentList) ) $result = Html::tag('option', Html::encode('Выберите Комлпектацию'), ['value' => 0]);
+                if ( count($carEquipmentList) ) $result = Html::tag('option', Html::encode('Выберите Комплектацию'), ['value' => 0]);
                 foreach ($carEquipmentList as $carEquipment) {
                     $result .= Html::tag('option', Html::encode($carEquipment->name), ['value' => $carEquipment->primaryKey]);
                 }
