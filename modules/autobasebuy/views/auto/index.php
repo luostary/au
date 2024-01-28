@@ -186,20 +186,9 @@ $this->title = 'Каталог';
                                     },
                                     success: function (html) {
                                         $('#carCharValue').html(html);
-                                        $('#carModificationEquipment').val( $(this).val() ).change();
-                                        
                                     }
                                 });
-                            }",
-                        ],
-                    ]);
-                    echo \kartik\select2\Select2::widget([
-                        'id' => 'carModificationEquipment',
-                        'name' => 'car_modification_equipment',
-                        'data' => [],
-                        'hideSearch' => true,
-                        'pluginEvents' => [
-                            "change" => "function(a) {
+                                
                                 $.ajax({
                                     url: '/catalog/auto/get-equipment-list',
                                     data: {
