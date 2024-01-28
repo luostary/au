@@ -14,9 +14,8 @@ class menuProfile extends \yii\bootstrap4\Widget
     public function run()
     {
         $items = [
-            ['label' => 'List items', 'url' => ['/profile/excel/index']],
-            ['label' => 'Upload items', 'url' => ['/profile/excel/upload']],
-            ['label' => 'Item 3', 'url' => ['/profile/excel']],
+            ['label' => Yii::t('app', 'Upload excel'), 'url' => ['/profile/excel/upload']],
+            ['label' => Yii::t('app', 'My cars'), 'url' => ['/profile/car']],
         ];
 
         foreach ($items as &$item) {
