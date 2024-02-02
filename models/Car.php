@@ -37,6 +37,7 @@ class Car extends \yii\db\ActiveRecord
     {
         return [
             [['id_car_mark', 'id_car_model'], 'required'],
+            [['price'], 'number'],
             [['id_car_mark', 'id_car_model', 'id_car_generation', 'id_car_modification', 'id_car_serie', 'is_active'], 'integer'],
             [['id_car_generation', 'id_car_modification', 'id_car_serie'], 'required', 'on' => self::SCENARIO_MANUAL_UPDATE],
         ];
