@@ -308,8 +308,7 @@ nav.pagination.dynamic a { display:block; padding:12px 20px; text-decoration:non
 
 @media only screen and (min-width:801px) {
 	.sidebar.doFloat {
-		position:absolute;
-		margin:0 !important;
+		float: right;
 		top:0;
 	}
 	.sidebar-right .sidebar.floating {

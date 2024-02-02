@@ -102,8 +102,6 @@ AppAsset::register($this);
     <script type="text/javascript" src="https://demo2.smthemes.com/wp-includes/js/jquery/jquery.js?ver=1.11.3"></script>
     <script type="text/javascript"
             src="https://demo2.smthemes.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1"></script>
-    <script type="text/javascript"
-            src="https://demo2.smthemes.com/wp-content/themes/elementauto/js/frontend.js?ver=85"></script>
     <link rel="https://api.w.org/" href="https://demo2.smthemes.com/?rest_route=/">
     <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://demo2.smthemes.com/xmlrpc.php?rsd">
     <link rel="wlwmanifest" type="application/wlwmanifest+xml"
@@ -304,10 +302,7 @@ AppAsset::register($this);
                 <?= $content ?>
             </div>
 
-            <script>
-                jQuery('.site-content').addClass('sidebar-right');
-            </script>
-            <div class="sidebar clearfix floating doFloat" style="width: 265px; top: 0px;">
+            <div class="sidebar clearfix floating doFloat" style="width: 265px;">
                 <div id="smt_social_profiles-3" class="widget widget_smt_social_profiles">
 
                     <?= \app\widgets\socialButtons::widget() ?>
@@ -375,11 +370,8 @@ AppAsset::register($this);
             </style>
 
             <div class="footer_txt">
-                <div>Copyright © 2023 <a href="https://demo2.smthemes.com">SMThemes.com Demo</a></div>
-                <div class="smthemes">Designed by <a href="http://smthemes.com" target="_blank">SMThemes.com</a>, thanks
-                    to: <a href="http://www.dpthemes.com/" target="_blank">www.dpthemes.com</a>, <a
-                            href="http://crocotheme.com/" target="_blank">crocotheme.com</a> and <a
-                            href="http://theme.today/" target="_blank">http://theme.today</a></div>
+                <div>Copyright © 2023 <a href="javascript:void(0);">Auto</a></div>
+                <div class="">Designed on the knee</div>
             </div>
 
         </div>
