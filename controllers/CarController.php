@@ -53,6 +53,14 @@ class CarController extends Controller
             'query' => $cars
         ]);
 
+        if (\Yii::$app->request->isPost) {
+            $data = \Yii::$app->request->post();
+            $car = Car::findOne((int)$data['id']);
+            $reservedPeriod = 30;
+            $car->updateAttributes(['dt_reserved_until' => date('Y-m-d H:i:s', time() + $reservedPeriod)]);
+            $this->redirect('');
+        }
+
         return $this->render('index', ['dataProvider' => $dataProvider]);
     }
 

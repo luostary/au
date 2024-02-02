@@ -44,8 +44,13 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'id',
                 'format' => 'raw',
-                'value' => function () {
-                    return Html::submitButton(Yii::t('app', 'Book now'), ['class' => 'button']);
+                'value' => function (Car $model) {
+                    if (is_null($model->dt_reserved_until) || strtotime($model->dt_reserved_until) < time()) {
+                        $button = Html::submitButton(Yii::t('app', 'Book now'), ['class' => 'button', 'name' => 'id', 'value' => $model->id]);
+                    } else {
+                        $button = Html::button(Yii::t('app', 'Booked'), ['class' => 'button-muted', 'disabled' => true]);
+                    }
+                    return $button;
                 }
             ],
         ],

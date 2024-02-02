@@ -42,6 +42,22 @@ a:hover {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f02a04', endColorstr='#f00391',GradientType=1 ); /* IE6-9 */
 	border-radius:30px;
 }
+
+.button-muted {
+	padding: 4px 30px;
+	line-height:27px;
+	background: #a09999;
+	color:#fff;
+	font-size:11px;
+	font-family:'days_oneregular';
+	text-transform:uppercase;
+	background: rgb(160, 153, 153); /* Old browsers */
+	background: -moz-linear-gradient(left, rgb(160, 153, 153) 0%, rgb(160, 153, 153) 26%, rgb(122, 116, 116) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(left, rgb(160, 153, 153) 0%, rgb(160, 153, 153) 26%, rgb(122, 116, 116) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to right, rgb(160, 153, 153) 0%, rgb(160, 153, 153) 26%, rgb(122, 116, 116) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f02a04', endColorstr='#f00391',GradientType=1 ); /* IE6-9 */
+	border-radius:30px;
+}
 .submit:hover, .button:hover, input[type="submit"]:hover { 
 	background:#000;
 	color:#fff;
