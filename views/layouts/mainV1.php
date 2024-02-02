@@ -137,7 +137,7 @@ AppAsset::register($this);
                 <!-- Logo -->
                 <a id="logo" href="/"><img
                             src="/elementauto/images/logo.png"
-                            alt="SMThemes.com Demo" title="SMThemes.com Demo"></a>
+                            alt="" title=""></a>
 
                 <!-- / Logo -->
 
@@ -173,7 +173,7 @@ AppAsset::register($this);
                     <div class="fp-slides-item">
                         <div class="slider-bgr"></div>
                         <div class="fp-thumbnail">
-                            <a href="https://demo2.smthemes.com" title=""><img
+                            <a href="javascript:void(0);" title=""><img
                                         src="/elementauto/images/slides/1.jpg"
                                         alt="Far far away"></a>
                         </div>
@@ -185,7 +185,7 @@ AppAsset::register($this);
                                 <p class="fp-description">Far far away, behind the word mountains, far from the
                                     countries Vokalia and Consonantia, there live the blind texts</p>
 
-                                <a class="fp-more button" href="https://demo2.smthemes.com">Read More</a>
+                                <a class="fp-more button" href="javascript:void(0);">Read More</a>
 
                                 <div class="clear"></div>
 
@@ -195,7 +195,7 @@ AppAsset::register($this);
                     <div class="fp-slides-item">
                         <div class="slider-bgr"></div>
                         <div class="fp-thumbnail">
-                            <a href="https://demo2.smthemes.com" title=""><img
+                            <a href="javascript:void(0);" title=""><img
                                         src="https://demo2.smthemes.com/wp-content/themes/elementauto/images/slides/2.jpg"
                                         alt="Behind the word mountains"></a>
                         </div>
@@ -207,7 +207,7 @@ AppAsset::register($this);
                                 <p class="fp-description">Far far away, behind the word mountains, far from the
                                     countries Vokalia and Consonantia, there live the blind texts</p>
 
-                                <a class="fp-more button" href="https://demo2.smthemes.com">Read More</a>
+                                <a class="fp-more button" href="javascript:void(0);">Read More</a>
 
                                 <div class="clear"></div>
 
@@ -217,7 +217,7 @@ AppAsset::register($this);
                     <div class="fp-slides-item">
                         <div class="slider-bgr"></div>
                         <div class="fp-thumbnail">
-                            <a href="https://demo2.smthemes.com" title=""><img
+                            <a href="javascript:void(0);" title=""><img
                                         src="https://demo2.smthemes.com/wp-content/themes/elementauto/images/slides/3.jpg"
                                         alt="Far from the countries Vokalia"></a>
                         </div>
@@ -229,7 +229,7 @@ AppAsset::register($this);
                                 <p class="fp-description">Far far away, behind the word mountains, far from the
                                     countries Vokalia and Consonantia, there live the blind texts</p>
 
-                                <a class="fp-more button" href="https://demo2.smthemes.com">Read More</a>
+                                <a class="fp-more button" href="javascript:void(0);">Read More</a>
 
                                 <div class="clear"></div>
 
@@ -239,7 +239,7 @@ AppAsset::register($this);
                     <div class="fp-slides-item">
                         <div class="slider-bgr"></div>
                         <div class="fp-thumbnail">
-                            <a href="https://demo2.smthemes.com" title=""><img
+                            <a href="javascript:void(0);" title=""><img
                                         src="https://demo2.smthemes.com/wp-content/themes/elementauto/images/slides/4.jpg"
                                         alt="There live the blind texts"></a>
                         </div>
@@ -251,7 +251,7 @@ AppAsset::register($this);
                                 <p class="fp-description">Far far away, behind the word mountains, far from the
                                     countries Vokalia and Consonantia, there live the blind texts</p>
 
-                                <a class="fp-more button" href="https://demo2.smthemes.com">Read More</a>
+                                <a class="fp-more button" href="javascript:void(0);">Read More</a>
 
                                 <div class="clear"></div>
 
