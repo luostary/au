@@ -16,6 +16,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
+    <form id="car-reserve" action="" method="post">
+        <input type="hidden" name="_csrf" value="<?= Yii::$app->request->csrfToken ?>">
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
@@ -48,6 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ],
     ]); ?>
+    </form>
 
 
 </div>
