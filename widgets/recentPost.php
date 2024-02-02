@@ -30,7 +30,7 @@ class recentPost extends \yii\bootstrap4\Widget
                     </div>
 
 
-                    <a class="title" href="https://demo2.smthemes.com/?p=1770" rel="bookmark"
+                    <a class="title" href="javascript:void(0);" rel="bookmark"
                        title="Odio erat, condimentum eu tortor et, porta malesuada justo">Odio erat, condimentum
                         eu tortor et, porta malesuada justo</a>
 
@@ -51,7 +51,7 @@ class recentPost extends \yii\bootstrap4\Widget
                     </div>
 
 
-                    <a class="title" href="https://demo2.smthemes.com/?p=1767" rel="bookmark"
+                    <a class="title" href="javascript:void(0);" rel="bookmark"
                        title="Nec dolor pharetra, pulvinar lectus nec">Nec dolor pharetra, pulvinar lectus
                         nec</a>
 
@@ -72,7 +72,7 @@ class recentPost extends \yii\bootstrap4\Widget
                     </div>
 
 
-                    <a class="title" href="https://demo2.smthemes.com/?p=1764" rel="bookmark"
+                    <a class="title" href="javascript:void(0);" rel="bookmark"
                        title="Posuere eros risus, sit amet scelerisque ante placerat sed">Posuere eros risus,
                         sit amet scelerisque ante placerat sed</a>
 
@@ -94,7 +94,7 @@ class recentPost extends \yii\bootstrap4\Widget
                     </div>
 
 
-                    <a class="title" href="https://demo2.smthemes.com/?p=1761" rel="bookmark"
+                    <a class="title" href="javascript:void(0);" rel="bookmark"
                        title="Vestibulum dictum ex sed lorem tincidunt rutrum">Vestibulum dictum ex sed lorem
                         tincidunt rutrum</a>
 
@@ -116,7 +116,7 @@ class recentPost extends \yii\bootstrap4\Widget
                     </div>
 
 
-                    <a class="title" href="https://demo2.smthemes.com/?p=1756" rel="bookmark"
+                    <a class="title" href="javascript:void(0);" rel="bookmark"
                        title="Libero non vestibulum laoreet">Libero non vestibulum laoreet</a>
 
 
