@@ -11,6 +11,7 @@ use app\modules\autobasebuy\models\CarSerie;
 /**
  * This is the model class for table "car".
  *
+ * @property string $dt_reserved_until
  * @property int $id
  * @property int $id_car_mark
  * @property int $id_car_model
@@ -38,6 +39,7 @@ class Car extends \yii\db\ActiveRecord
         return [
             [['id_car_mark', 'id_car_model'], 'required'],
             [['price'], 'number'],
+            [['dt_reserved_until'], 'string'],
             [['id_car_mark', 'id_car_model', 'id_car_generation', 'id_car_modification', 'id_car_serie', 'is_active'], 'integer'],
             [['id_car_generation', 'id_car_modification', 'id_car_serie'], 'required', 'on' => self::SCENARIO_MANUAL_UPDATE],
         ];
@@ -60,6 +62,7 @@ class Car extends \yii\db\ActiveRecord
             'is_active' => 'Активно',
             'dt_create' => 'Дата создания',
             'dt_update' => 'Дата обновления',
+            'dt_reserved_until' => 'Забронировано до',
         ];
     }
 
