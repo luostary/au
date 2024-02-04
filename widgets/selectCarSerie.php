@@ -2,6 +2,7 @@
 
 namespace app\widgets;
 
+use app\modules\autobasebuy\models\CarSerie;
 use kartik\select2\Select2;
 
 class selectCarSerie extends \yii\base\Widget
@@ -11,10 +12,24 @@ class selectCarSerie extends \yii\base\Widget
 
     public function run()
     {
+
+        $id_car_model = \Yii::$app->request->get()['CarSearch']['id_car_model'];
+        $id_car_generation = \Yii::$app->request->get()['CarSearch']['id_car_generation'];
+        $data = ($id_car_model && $id_car_generation)
+            ? CarSerie::listAll($id_car_model, $id_car_generation)
+            : [];
         return $this->form->field($this->model, 'id_car_serie')->widget(Select2::class, [
             'name' => 'car_serie',
-            'data' => [],
+            'data' => $data,
+            'options' => [
+                'value' => \Yii::$app->request->get()['CarSearch']['id_car_serie'],
+                'prompt' => '',
+            ],
             'hideSearch' => true,
+            'pluginOptions' => [
+                'allowClear' => true,
+                'placeholder' => $this->model->getAttributeLabel('id_car_serie')
+            ],
             'pluginEvents' => [
                 "change" => "function(a) {
                     $.ajax({
@@ -29,6 +44,6 @@ class selectCarSerie extends \yii\base\Widget
                     });
                 }",
             ],
-        ]);
+        ])->label(false);
     }
 }

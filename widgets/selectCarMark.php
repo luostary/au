@@ -14,10 +14,14 @@ class selectCarMark extends Widget
     {
         return $this->form->field($this->model, 'id_car_mark')->widget(\kartik\select2\Select2::class, [
                 'data' => CarMark::listAll(),
-                'options' => ['prompt' => ''],
+                'options' => [
+                    'value' => \Yii::$app->request->get()['CarSearch']['id_car_mark'],
+                    'prompt' => ''
+                ],
+                'hideSearch' => true,
                 'pluginOptions' => [
                     'allowClear' => true,
-                    'placeholder' => 'Не указано'
+                    'placeholder' => $this->model->getAttributeLabel('id_car_mark'),
                 ],
                 'pluginEvents' => [
                     "change" => "function(a) {
@@ -33,6 +37,6 @@ class selectCarMark extends Widget
                 }",
                 ],
             ]
-        );
+        )->label(false);
     }
 }
