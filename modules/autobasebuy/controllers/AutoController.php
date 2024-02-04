@@ -87,7 +87,7 @@ class AutoController extends \yii\web\Controller
 
             if ($idCarType !== null) {
                 $carMarkList = CarMark::find()->andWhere(array('id_car_type' => $idCarType))->all();
-                $result = Html::tag('option', Html::encode('Выберите Марку'), ['value' => 0]);
+                $result = Html::tag('option', Html::encode('Выберите Марку'), ['value' => '']);
                 foreach ($carMarkList as $carMark) {
                     $result .= Html::tag('option', Html::encode($carMark->name), ['value' => $carMark->primaryKey]);
                 }
@@ -101,7 +101,7 @@ class AutoController extends \yii\web\Controller
             $idCarMark = $id_car_mark;
             if ($idCarMark !== null) {
                 $carModelList = CarModel::find()->andWhere(array('id_car_mark' => $idCarMark))->all();
-                $result = Html::tag('option', Html::encode('Выберите Модель'), ['value' => 0]);
+                $result = Html::tag('option', Html::encode('Выберите Модель'), ['value' => '']);
                 foreach ($carModelList as $carModel) {
                     $result .= Html::tag('option', Html::encode($carModel->name), ['value' => $carModel->primaryKey]);
                 }
@@ -115,8 +115,8 @@ class AutoController extends \yii\web\Controller
             $idCarModel = $id_car_model;
             if ($idCarModel !== null) {
                 $carGenerationList = CarGeneration::find()->andWhere(array('id_car_model' => $idCarModel))->all();
-                $result = Html::tag('option', Html::encode('-'), ['value' => 0]);
-                if ( count($carGenerationList) ) $result = Html::tag('option', Html::encode('Выберите Поколение'), ['value' => 0]);
+                $result = Html::tag('option', Html::encode('-'), ['value' => '']);
+                if ( count($carGenerationList) ) $result = Html::tag('option', Html::encode('Выберите Поколение'), ['value' => '']);
                 foreach ($carGenerationList as $carGeneration) {
                     $yearStr = '';
                     if ( $carGeneration->year_begin ){
@@ -148,7 +148,7 @@ class AutoController extends \yii\web\Controller
 
             $carSerieList = CarSerie::findAll($cr);
 
-            $result = Html::tag('option', Html::encode('Выберите Серию'), ['value' => 0]);
+            $result = Html::tag('option', Html::encode('Выберите Серию'), ['value' => '']);
             foreach ($carSerieList as $carSerie) {
                 $result .= Html::tag('option', Html::encode($carSerie->name), ['value' => $carSerie->primaryKey]);
             }
@@ -161,7 +161,7 @@ class AutoController extends \yii\web\Controller
             $idCarSerie = $id_car_serie;
             if ($idCarSerie !== null) {
                 $carModificationList = CarModification::find()->andWhere(['id_car_serie' => $idCarSerie])->all();
-                $result = Html::tag('option', Html::encode('Выберите Модификацию'), ['value' => 0]);
+                $result = Html::tag('option', Html::encode('Выберите Модификацию'), ['value' => '']);
                 foreach ($carModificationList as $carModification) {
                     $result .= Html::tag('option', Html::encode($carModification->name), ['value' => $carModification->primaryKey]);
                 }
@@ -175,8 +175,8 @@ class AutoController extends \yii\web\Controller
             $idCarModification = $id_car_modification;
             if ($idCarModification !== null) {
                 $carEquipmentList = CarEquipment::find()->where(['id_car_modification' => $idCarModification])->all();
-                $result = Html::tag('option', Html::encode('-'), ['value' => 0]);
-                if ( count($carEquipmentList) ) $result = Html::tag('option', Html::encode('Выберите Комплектацию'), ['value' => 0]);
+                $result = Html::tag('option', Html::encode('-'), ['value' => '']);
+                if ( count($carEquipmentList) ) $result = Html::tag('option', Html::encode('Выберите Комплектацию'), ['value' => '']);
                 foreach ($carEquipmentList as $carEquipment) {
                     $result .= Html::tag('option', Html::encode($carEquipment->name), ['value' => $carEquipment->primaryKey]);
                 }

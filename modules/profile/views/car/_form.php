@@ -13,7 +13,15 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= \app\widgets\selectCarMark::widget(['form' => $form, 'model' => $model]); ?>
+    <?= $form->field($model, 'id_car_mark')->widget(\kartik\select2\Select2::class, [
+            'data' => \app\modules\autobasebuy\models\CarMark::listAll(),
+            'options' => ['prompt' => ''],
+            'pluginOptions' => [
+                'allowClear' => true,
+                'placeholder' => 'Не указано'
+            ],
+        ]
+    ) ?>
 
     <?= $form->field($model, 'id_car_model')->widget(\kartik\select2\Select2::class, [
             'data' => \app\modules\autobasebuy\models\CarModel::listAll($model->id_car_mark),
