@@ -41,7 +41,15 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $model->carModification->name;
                 }
             ],
-            'price:decimal',
+            [
+                'attribute' => 'price',
+                'contentOptions' => [
+                    'class' => 'text-right'
+                ],
+                'value' => function (Car $model) {
+                    return Yii::$app->formatter->asDecimal($model->price,2);
+                }
+            ],
             [
                 'attribute' => 'id',
                 'format' => 'raw',
