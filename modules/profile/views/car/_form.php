@@ -13,28 +13,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'id_car_mark')->widget(\kartik\select2\Select2::class, [
-            'data' => CarMark::listAll(),
-            'options' => ['prompt' => ''],
-            'pluginOptions' => [
-                'allowClear' => true,
-                'placeholder' => 'Не указано'
-            ],
-            'pluginEvents' => [
-                "change" => "function(a) {
-                    $.ajax({
-                        url: '/catalog/auto/get-model-list',
-                        data: {
-                            'id_car_mark': $(this).val(),
-                        },
-                        success: function (data) {
-                            $('#car-id_car_model').html(data);
-                        }
-                    });
-                }",
-            ],
-        ]
-    ) ?>
+    <?= \app\widgets\selectCarMark::widget(['form' => $form, 'model' => $model]); ?>
 
     <?= $form->field($model, 'id_car_model')->widget(\kartik\select2\Select2::class, [
             'data' => \app\modules\autobasebuy\models\CarModel::listAll($model->id_car_mark),

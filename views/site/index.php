@@ -1,53 +1,62 @@
 <?php
 
+use app\models\Car;
+use yii\helpers\Html;
+use yii\grid\GridView;
+
 /** @var yii\web\View $this */
+/** @var \app\models\CarSearch $searchModel */
+/** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'My Yii Application';
+$this->title = Yii::t('app', 'Cars');
+$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-index">
+<div class="car-index">
 
-    <div class="jumbotron text-center bg-transparent">
-        <h1 class="display-4">Congratulations!</h1>
+    <?= $this->render('_filter', ['searchModel' => $searchModel]) ?>
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
+    <h1><?= Html::encode($this->title) ?></h1>
 
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
+    <form id="car-reserve" action="" method="post">
+        <input type="hidden" name="_csrf" value="<?= Yii::$app->request->csrfToken ?>">
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+            [
+                'attribute' => 'id_car_mark',
+                'value' => function (Car $model) {
+                    return $model->carMark->name . ' - ' . $model->carModel->name;
+                }
+            ],
+            [
+                'attribute' => 'id_car_generation',
+                'value' => function (Car $model) {
+                    return $model->carGeneration->name;
+                }
+            ],
+            [
+                'attribute' => 'id_car_modification',
+                'value' => function (Car $model) {
+                    return $model->carModification->name;
+                }
+            ],
+            'price:decimal',
+            [
+                'attribute' => 'id',
+                'format' => 'raw',
+                'value' => function (Car $model) {
+                    if (is_null($model->dt_reserved_until) || strtotime($model->dt_reserved_until) < time()) {
+                        $button = Html::submitButton(Yii::t('app', 'Book now'), ['class' => 'button', 'name' => 'id', 'value' => $model->id]);
+                    } else {
+                        $button = Html::button(Yii::t('app', 'Booked'), ['class' => 'button-muted', 'disabled' => true]);
+                    }
+                    return $button;
+                }
+            ],
+        ],
+    ]); ?>
+    </form>
 
-    <div class="body-content">
 
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-secondary" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-secondary" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-secondary" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
-        </div>
-
-    </div>
 </div>

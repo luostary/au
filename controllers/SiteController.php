@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\Car;
+use app\models\CarSearch;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -61,7 +63,21 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $searchModel = new CarSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->get());
+
+        if (\Yii::$app->request->isPost) {
+            $data = \Yii::$app->request->post();
+            $car = Car::findOne((int)$data['id']);
+            $reservedPeriod = 30;
+            $car->updateAttributes(['dt_reserved_until' => date('Y-m-d H:i:s', time() + $reservedPeriod)]);
+            $this->redirect('');
+        }
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider
+        ]);
     }
 
     /**
