@@ -2,8 +2,28 @@
 
 /** @var \app\models\CarSearch $searchModel */
 
-$form = \yii\bootstrap\ActiveForm::begin([]);
+$form = \yii\bootstrap\ActiveForm::begin([]); ?>
 
-echo \app\widgets\selectCarMark::widget(['form' => $form, 'model' => $searchModel]);
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <?php echo \app\widgets\selectCarMark::widget(['form' => $form, 'model' => $searchModel]); ?>
+        </div>
+        <div class="col-md-2">
+            <?php echo \app\widgets\selectCarModel::widget(['form' => $form, 'model' => $searchModel]); ?>
+        </div>
+        <div class="col-md-2">
+            <?php echo \app\widgets\selectCarGeneration::widget(['form' => $form, 'model' => $searchModel]); ?>
+        </div>
+        <div class="col-md-2">
+            <?php echo \app\widgets\selectCarSerie::widget(['form' => $form, 'model' => $searchModel]); ?>
+        </div>
+        <div class="col-md-2">
+            <?php echo \app\widgets\selectCarModification::widget(['form' => $form, 'model' => $searchModel]); ?>
+        </div>
+    </div>
+</div>
 
-\yii\bootstrap\ActiveForm::end();
+
+
+<?php \yii\bootstrap\ActiveForm::end(); ?>
