@@ -1,7 +1,11 @@
 <?php
 
 $params = require __DIR__ . '/params.php';
-$db = require __DIR__ . '/private/db.php';
+$db = __DIR__ . '/private/db.php';
+if (!file_exists($db)) {
+    die('Создайте файл db.php тут ' . $db);
+}
+$db = require $db;
 $mailer = require __DIR__ . '/private/mailer.php';
 
 $config = [
