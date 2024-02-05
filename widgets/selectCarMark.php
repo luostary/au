@@ -12,14 +12,10 @@ class selectCarMark extends Widget
 
     public function run()
     {
-        $value = (\Yii::$app->request->get('CarSearch')['id_car_mark'])
-            ? \Yii::$app->request->get('CarSearch')['id_car_mark']
-            : '';
-
         return $this->form->field($this->model, 'id_car_mark')->widget(\kartik\select2\Select2::class, [
                 'data' => CarMark::listAll(),
                 'options' => [
-                    'value' => $value,
+                    'value' => \Yii::$app->request->get('CarSearch')['id_car_mark'],
                     'prompt' => ''
                 ],
                 'hideSearch' => true,

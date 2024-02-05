@@ -22,6 +22,9 @@ class selectCarModification extends \yii\base\Widget
             'name' => 'car_modification',
             'data' => $data,
             'hideSearch' => true,
+            'options' => [
+                'value' => \Yii::$app->request->get('CarSearch')['id_car_modification']
+            ],
             'pluginOptions' => [
                 'allowClear' => true,
                 'placeholder' => $this->model->getAttributeLabel('id_car_modification')

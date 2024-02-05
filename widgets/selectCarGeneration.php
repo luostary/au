@@ -12,14 +12,14 @@ class selectCarGeneration extends \yii\base\Widget
 
     public function run()
     {
-        $data = (\Yii::$app->request->get()['CarSearch']['id_car_model'])
-            ? CarGeneration::listAll(\Yii::$app->request->get()['CarSearch']['id_car_model'])
+        $data = (\Yii::$app->request->get('CarSearch')['id_car_model'])
+            ? CarGeneration::listAll(\Yii::$app->request->get('CarSearch')['id_car_model'])
             : [];
         return $this->form->field($this->model, 'id_car_generation')->widget(Select2::class, [
             'name' => 'car_generation',
             'data' => $data,
             'options' => [
-                'value' => \Yii::$app->request->get()['CarSearch']['id_car_generation'],
+                'value' => \Yii::$app->request->get('CarSearch')['id_car_generation'],
                 'prompt' => '',
             ],
             'hideSearch' => true,

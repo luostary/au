@@ -22,7 +22,7 @@ class selectCarSerie extends \yii\base\Widget
             'name' => 'car_serie',
             'data' => $data,
             'options' => [
-                'value' => \Yii::$app->request->get()['CarSearch']['id_car_serie'],
+                'value' => \Yii::$app->request->get('CarSearch')['id_car_serie'],
                 'prompt' => '',
             ],
             'hideSearch' => true,
