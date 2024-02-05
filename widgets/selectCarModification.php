@@ -12,8 +12,8 @@ class selectCarModification extends \yii\base\Widget
 
     public function run()
     {
-        $id_car_serie = \Yii::$app->request->get()['CarSearch']['id_car_serie'];
-        $id_car_model = \Yii::$app->request->get()['CarSearch']['id_car_model'];
+        $id_car_serie = \Yii::$app->request->get('CarSearch')['id_car_serie'];
+        $id_car_model = \Yii::$app->request->get('CarSearch')['id_car_model'];
 
         $data = ($id_car_serie && $id_car_model)
             ? CarModification::listAll($id_car_serie, $id_car_model)

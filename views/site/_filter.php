@@ -28,8 +28,8 @@ $form = \yii\bootstrap\ActiveForm::begin([
     </div>
     <div class="row">
         <div class="col-md-6">
-            <input type="text" class="form-group" placeholder="Цена от, руб." name="CarSearch[priceMin]" value="<?=Yii::$app->request->get()['CarSearch']['priceMin']?>"/>
-            <input type="text" class="form-group" placeholder="Цена до, руб." name="CarSearch[priceMax]" value="<?=Yii::$app->request->get()['CarSearch']['priceMax']?>"/>
+            <input type="text" class="form-group" placeholder="Цена от, руб." name="CarSearch[priceMin]" value="<?=Yii::$app->request->get('CarSearch')['priceMin']?>"/>
+            <input type="text" class="form-group" placeholder="Цена до, руб." name="CarSearch[priceMax]" value="<?=Yii::$app->request->get('CarSearch')['priceMax']?>"/>
         </div>
     </div>
     <div class="row">
