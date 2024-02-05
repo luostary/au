@@ -34,24 +34,26 @@ class CarSearch extends Car
 
         $carSearch = (!empty($params)) ? $params['CarSearch'] : [];
 
-        if ($carSearch['id_car_mark']) {
-            $query->andWhere(['id_car_mark' => $carSearch['id_car_mark']]);
-        }
+        if ($carSearch) {
+            if ($carSearch['id_car_mark']) {
+                $query->andWhere(['id_car_mark' => $carSearch['id_car_mark']]);
+            }
 
-        if ($carSearch['id_car_model']) {
-            $query->andWhere(['id_car_model' => $carSearch['id_car_model']]);
-        }
+            if ($carSearch['id_car_model']) {
+                $query->andWhere(['id_car_model' => $carSearch['id_car_model']]);
+            }
 
-        if ($carSearch['id_car_generation']) {
-            $query->andWhere(['id_car_generation' => $carSearch['id_car_generation']]);
-        }
+            if ($carSearch['id_car_generation']) {
+                $query->andWhere(['id_car_generation' => $carSearch['id_car_generation']]);
+            }
 
-        if ($carSearch['priceMin']) {
-            $query->andWhere(['>=', 'price', $carSearch['priceMin']]);
-        }
+            if ($carSearch['priceMin']) {
+                $query->andWhere(['>=', 'price', $carSearch['priceMin']]);
+            }
 
-        if ($carSearch['priceMax']) {
-            $query->andWhere(['<=', 'price', $carSearch['priceMax']]);
+            if ($carSearch['priceMax']) {
+                $query->andWhere(['<=', 'price', $carSearch['priceMax']]);
+            }
         }
 
         return new ActiveDataProvider(['query' => $query]);
