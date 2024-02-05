@@ -13,19 +13,15 @@ class selectCarModel extends Widget
 
     public function run()
     {
-        if (\Yii::$app->request->get('CarSearch')['id_car_mark']) {
-            $data = CarModel::listAll(\Yii::$app->request->get('CarSearch')['id_car_mark']);
-            $value = \Yii::$app->request->get('CarSearch')['id_car_model'];
-        } else {
-            $data = [];
-            $value = '';
-        }
+        $data = (\Yii::$app->request->get()['CarSearch']['id_car_mark'])
+            ? CarModel::listAll(\Yii::$app->request->get()['CarSearch']['id_car_mark'])
+            : [];
 
         return $this->form->field($this->model, 'id_car_model')->widget(Select2::class, [
             'name' => 'car_model',
             'data' => $data,
             'options' => [
-                'value' => $value,
+                'value' => \Yii::$app->request->get()['CarSearch']['id_car_model'],
                 'prompt' => '',
             ],
             'hideSearch' => true,

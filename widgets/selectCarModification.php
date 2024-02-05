@@ -4,7 +4,6 @@ namespace app\widgets;
 
 use app\modules\autobasebuy\models\CarModification;
 use kartik\select2\Select2;
-use Yii;
 
 class selectCarModification extends \yii\base\Widget
 {
@@ -19,17 +18,10 @@ class selectCarModification extends \yii\base\Widget
         $data = ($id_car_serie && $id_car_model)
             ? CarModification::listAll($id_car_serie, $id_car_model)
             : [];
-
-        $value = (\Yii::$app->request->get()['CarSearch']['id_car_modification'])
-            ? \Yii::$app->request->get()['CarSearch']['id_car_modification']
-            : '';
         return $this->form->field($this->model, 'id_car_modification')->widget(Select2::class, [
             'name' => 'car_modification',
             'data' => $data,
             'hideSearch' => true,
-            'options' => [
-                'value' => $value,
-            ],
             'pluginOptions' => [
                 'allowClear' => true,
                 'placeholder' => $this->model->getAttributeLabel('id_car_modification')
