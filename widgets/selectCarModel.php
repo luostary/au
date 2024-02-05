@@ -13,9 +13,9 @@ class selectCarModel extends Widget
 
     public function run()
     {
-        if (\Yii::$app->request->get()['CarSearch']['id_car_mark']) {
-            $data = CarModel::listAll(\Yii::$app->request->get()['CarSearch']['id_car_mark']);
-            $value = \Yii::$app->request->get()['CarSearch']['id_car_model'];
+        if (\Yii::$app->request->get('CarSearch')['id_car_mark']) {
+            $data = CarModel::listAll(\Yii::$app->request->get('CarSearch')['id_car_mark']);
+            $value = \Yii::$app->request->get('CarSearch')['id_car_model'];
         } else {
             $data = [];
             $value = '';
