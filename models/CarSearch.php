@@ -32,7 +32,7 @@ class CarSearch extends Car
     {
         $query = Car::find();
 
-        $carSearch = $params['CarSearch'];
+        $carSearch = (!empty($params)) ? $params['CarSearch'] : [];
 
         if ($carSearch['id_car_mark']) {
             $query->andWhere(['id_car_mark' => $carSearch['id_car_mark']]);
