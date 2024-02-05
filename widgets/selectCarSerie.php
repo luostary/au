@@ -13,8 +13,8 @@ class selectCarSerie extends \yii\base\Widget
     public function run()
     {
 
-        $id_car_model = \Yii::$app->request->get()['CarSearch']['id_car_model'];
-        $id_car_generation = \Yii::$app->request->get()['CarSearch']['id_car_generation'];
+        $id_car_model = \Yii::$app->request->get('CarSearch')['id_car_model'];
+        $id_car_generation = \Yii::$app->request->get('CarSearch')['id_car_generation'];
         $data = ($id_car_model && $id_car_generation)
             ? CarSerie::listAll($id_car_model, $id_car_generation)
             : [];
