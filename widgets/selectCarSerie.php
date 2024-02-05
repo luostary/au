@@ -18,11 +18,16 @@ class selectCarSerie extends \yii\base\Widget
         $data = ($id_car_model && $id_car_generation)
             ? CarSerie::listAll($id_car_model, $id_car_generation)
             : [];
+
+        $value = (\Yii::$app->request->get()['CarSearch']['id_car_serie'])
+            ? \Yii::$app->request->get()['CarSearch']['id_car_serie']
+            : '';
+
         return $this->form->field($this->model, 'id_car_serie')->widget(Select2::class, [
             'name' => 'car_serie',
             'data' => $data,
             'options' => [
-                'value' => \Yii::$app->request->get()['CarSearch']['id_car_serie'],
+                'value' => $value,
                 'prompt' => '',
             ],
             'hideSearch' => true,
