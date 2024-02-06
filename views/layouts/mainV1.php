@@ -102,6 +102,7 @@ AppAsset::register($this);
     <script type="text/javascript" src="https://demo2.smthemes.com/wp-includes/js/jquery/jquery.js?ver=1.11.3"></script>
     <script type="text/javascript"
             src="https://demo2.smthemes.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1"></script>
+    <script type="text/javascript" src="/elementauto/js/frontend.js?ver=85"></script>
     <link rel="https://api.w.org/" href="https://demo2.smthemes.com/?rest_route=/">
     <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://demo2.smthemes.com/xmlrpc.php?rsd">
     <link rel="wlwmanifest" type="application/wlwmanifest+xml"
