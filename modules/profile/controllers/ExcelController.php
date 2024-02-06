@@ -94,7 +94,7 @@ class ExcelController extends BaseController
                 $car->id_car_serie = ($serie) ? $serie->id_car_serie : null;
                 $car->id_user = \Yii::$app->user->id;
                 $car->price = $row['H'];
-                if ($mark && $model && $gen && $modification & $serie) {
+                if ($mark && $model && $gen && !empty($modification) & !empty($serie)) {
                     $car->is_active = 1;
                 } else {
                     $car->is_active = 0;

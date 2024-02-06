@@ -32,13 +32,17 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'id_car_generation',
                 'value' => function (Car $model) {
-                    return $model->carGeneration->name;
+                    if ($model->getCarGeneration()->exists()) {
+                        return $model->carGeneration->name;
+                    }
                 }
             ],
             [
                 'attribute' => 'id_car_modification',
                 'value' => function (Car $model) {
-                    return $model->carModification->name;
+                    if ($model->getCarModification()->exists()) {
+                        return $model->carModification->name;
+                    }
                 }
             ],
             [
