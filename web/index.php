@@ -4,6 +4,7 @@
 if (getenv('X_ENV') == 'DEV') {
     defined('YII_DEBUG') or define('YII_DEBUG', true);
     defined('YII_ENV') or define('YII_ENV', 'dev');
+    error_reporting(E_ALL);
 }
 
 $autoload = __DIR__ . '/../vendor/autoload.php';
