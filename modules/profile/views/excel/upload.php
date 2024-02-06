@@ -5,16 +5,16 @@
 ?>
 
 <div class="profile-default-index">
-    <h1><?= $this->context->action->uniqueId ?></h1>
-
-    Here show upload from excel document
+    <h1>Загрузка excel</h1>
     <form method="POST" enctype="multipart/form-data">
         <input type="file" name="excel"/>
+        <br/>
         <a href="/upload-example.xlsx">Скачать пример файла</a>
         <input type="submit" />
     </form>
-    <?php echo \yii\grid\GridView::widget([
+    <?php echo \kartik\grid\GridView::widget([
         'dataProvider' => new \yii\data\ArrayDataProvider(['allModels' => $data]),
+        'responsiveWrap' => false,
         'columns' => [
             'A', 'F'
         ],
