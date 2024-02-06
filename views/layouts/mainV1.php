@@ -329,22 +329,6 @@ AppAsset::register($this);
 
             <div class="footer-columns">
                 <?= \app\widgets\tag::widget() ?>
-                <div id="pages-2" class="widget widget_pages">
-                    <div class="caption"><h4>Pages</h4></div>
-                    <ul>
-                        <li class="page_item page-item-5 page_item_has_children"><a
-                                    href="javascript:void(0)">Taxi lists</a>
-                            <ul class="children">
-                                <li class="page_item page-item-1133"><a href="/site/driver">Driver</a></li>
-                                <li class="page_item page-item-1134"><a href="/site/order">Order</a></li>
-                            </ul>
-                        </li>
-                        <li class="page_item page-item-1779"><a href="/site/contact">Contact
-                                Us</a></li>
-                        <li class="page_item page-item-146"><a
-                                    href="/site/about">About Us</a></li>
-                    </ul>
-                </div>
                 <div id="text-2" class="widget widget_text">
                     <div class="textwidget"><p>Nam lacinia nunc sed diam porta, quis tempor augue aliquet. Mauris
                             molestie vel diam vel bibendum. Integer ultrices libero quis interdum posuere. Vestibulum
