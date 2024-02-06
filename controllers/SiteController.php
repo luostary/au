@@ -71,7 +71,7 @@ class SiteController extends Controller
             $car = Car::findOne((int)$data['id']);
             $reservedPeriod = 30;
             $car->updateAttributes(['dt_reserved_until' => date('Y-m-d H:i:s', time() + $reservedPeriod)]);
-            $this->redirect('');
+            \Yii::$app->getSession()->setFlash('success', \Yii::t('app', 'Автомобиль забронирован до ' . date('H:i:s', time() + $reservedPeriod)), 0);
         }
 
         return $this->render('index', [
