@@ -24,19 +24,25 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'id_car_mark',
                 'value' => function (Car $model) {
-                    return $model->carMark->name . ' - ' . $model->carModel->name;
+                    if ($model->getCarMark()->exists() && $model->getCarModel()->exists()) {
+                        return $model->carMark->name . ' - ' . $model->carModel->name;
+                    }
                 }
             ],
             [
                 'attribute' => 'id_car_generation',
                 'value' => function (Car $model) {
-                    return $model->carGeneration->name;
+                    if ($model->getCarGeneration()->exists()) {
+                        return $model->carGeneration->name;
+                    }
                 }
             ],
             [
                 'attribute' => 'id_car_modification',
                 'value' => function (Car $model) {
-                    return $model->carModification->name;
+                    if ($model->getCarModification()->exists()) {
+                        return $model->carModification->name;
+                    }
                 }
             ],
             'is_active:boolean',

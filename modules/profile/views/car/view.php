@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use app\models\Car;
 
 /** @var yii\web\View $this */
 /** @var app\models\Car $model */
@@ -32,32 +33,42 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             [
                 'attribute' => 'id_car_mark',
-                'value' => function ($model) {
-                    return $model->carMark->name;
+                'value' => function (Car $model) {
+                    if ($model->getCarMark()->exists()) {
+                        return $model->carMark->name;
+                    }
                 }
             ],
             [
                 'attribute' => 'id_car_model',
-                'value' => function ($model) {
-                    return $model->carModel->name;
+                'value' => function (Car $model) {
+                    if ($model->getCarModel()->exists()) {
+                        return $model->carModel->name;
+                    }
                 }
             ],
             [
                 'attribute' => 'id_car_generation',
-                'value' => function ($model) {
-                    return $model->carGeneration->name;
+                'value' => function (Car $model) {
+                    if ($model->getCarGeneration()->exists()) {
+                        return $model->carGeneration->name;
+                    }
                 }
             ],
             [
                 'attribute' => 'id_car_serie',
-                'value' => function ($model) {
-                    return $model->carSerie->name;
+                'value' => function (Car $model) {
+                    if ($model->getCarSerie()->exists()) {
+                        return $model->carSerie->name;
+                    }
                 }
             ],
             [
                 'attribute' => 'id_car_modification',
-                'value' => function ($model) {
-                    return $model->carModification->name;
+                'value' => function (Car $model) {
+                    if ($model->getCarModification()->exists()) {
+                        return $model->carModification->name;
+                    }
                 }
             ],
             'price',
