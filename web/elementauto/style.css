@@ -611,3 +611,9 @@ footer .widget_smt_posts .post-date {
 	color:#9c9c9c;
 	background: #3d3d40;
 }
+
+.btn-link {
+	color: #fff;
+	font-size: 12pt;
+	font-family: 'days_oneregular';
+}

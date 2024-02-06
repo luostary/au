@@ -16,25 +16,33 @@ class menuMain extends \yii\bootstrap4\Widget
         echo '
             <!-- Main Menu -->
             <nav id="main-menu" class="site-navigation mobile-menu" role="navigation">
-                <div class="menu-themedefault-container ">
-                    <ul class="nav-menu sf-js-enabled">
-                        <li><a href="/">Home</a></li>
-                        <li class="page_item page-item-1779"><a href="/site/contact">Contact
-                                Us</a></li>
-                        <li class="page_item page-item-5 page_item_has_children"><a
-                                    href="#" class="sf-with-ul">Taxi lists<span class="sf-sub-indicator"> »</span></a>
-                            <ul class="children" style="display: none; visibility: hidden;">
-                                <li class="page_item page-item-1133"><a
-                                            href="/site/driver">Driver</a>
-                                </li>
-                                <li class="page_item page-item-1134"><a
-                                            href="/site/order">Order</a></li>
-                            </ul>
-                        </li>
-                        <li class="page_item"><a href="/site/about">About</a>
-                        </li>
-                    </ul>
-                </div>
+                <div class="menu-themedefault-container ">';
+
+                $nav = Nav::begin();
+                $nav->options = ['class' => 'nav-menu sf-js-enabled'];
+                $nav->items = [
+                    ['label' => Yii::t('app', 'Contact Us'), 'url' => ['/site/contact']],
+                    ['label' => Yii::t('app', 'Catalog'), 'url' => ['/catalog/auto'], 'visible' => !Yii::$app->user->isGuest],
+                    ['label' => Yii::t('app', 'Cabinet'), 'url' => ['/profile'], 'visible' => !Yii::$app->user->isGuest],
+                    ['label' => Yii::t('app', 'My cars'), 'url' => ['/profile/car'], 'visible' => !Yii::$app->user->isGuest],
+                    ['label' => Yii::t('app', 'Upload excel'), 'url' => ['/profile/excel/upload'], 'visible' => !Yii::$app->user->isGuest],
+
+                    Yii::$app->user->isGuest ? (
+                    ['label' => Yii::t('app', 'Login'), 'url' => ['/user/login']]
+                    ) : (
+                     '<li class="nav-item">'
+                     . Html::beginForm(['/user/logout'], 'post', ['class' => 'form-inline1'])
+                     . Html::submitButton(
+                         Yii::t('app', 'Logout') . ' (' . Yii::$app->user->identity->username . ')',
+                         ['class' => 'btn btn-link logout']
+                     )
+                     . Html::endForm()
+                     . '</li>'
+                    ),
+                ];
+                echo $nav->run();
+
+                echo '</div>
                 <div id="menu-trigger"></div>
             </nav>
             <!-- / Main Menu -->
