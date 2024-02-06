@@ -63,6 +63,9 @@ $config = [
         'profile' => [
             'class' => 'app\modules\profile\ProfileModule',
         ],
+        'gridview' => [
+            'class' => '\kartik\grid\Module',
+        ],
     ],
 ];
 
