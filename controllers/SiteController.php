@@ -64,7 +64,9 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $searchModel = new CarSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->get());
+        $params = Yii::$app->request->get('CarSearch');
+        $params['is_active'] = 1;
+        $dataProvider = $searchModel->search($params);
 
         if (\Yii::$app->request->isPost) {
             $data = \Yii::$app->request->post();
