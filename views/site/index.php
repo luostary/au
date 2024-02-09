@@ -25,28 +25,28 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
             [
                 'attribute' => 'id_car_mark',
+                'contentOptions' => ['style' => 'text-wrap: balance;'],
                 'value' => function (Car $model) {
-                    return $model->carMark->name . ' - ' . $model->carModel->name;
-                }
-            ],
-            [
-                'attribute' => 'id_car_generation',
-                'value' => function (Car $model) {
+                    $arrayData = [];
+                    if ($model->getCarMark()->exists() && $model->getCarModel()->exists()) {
+                        $arrayData[] = $model->carMark->name;
+                    }
+                    if ($model->getCarModel()->exists()) {
+                        $arrayData[] = $model->carModel->name;
+                    }
                     if ($model->getCarGeneration()->exists()) {
-                        return $model->carGeneration->name;
+                        $arrayData[] = $model->carGeneration->name;
                     }
-                }
-            ],
-            [
-                'attribute' => 'id_car_modification',
-                'value' => function (Car $model) {
                     if ($model->getCarModification()->exists()) {
-                        return $model->carModification->name;
+                        $arrayData[] = $model->carModification->name;
                     }
+
+                    return join('; ', $arrayData);
                 }
             ],
             [
                 'attribute' => 'price',
+                'format' => 'html',
                 'contentOptions' => [
                     'class' => 'text-right'
                 ],
@@ -55,7 +55,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ],
             [
-                'attribute' => 'id',
                 'format' => 'raw',
                 'value' => function (Car $model) {
                     if (is_null($model->dt_reserved_until) || strtotime($model->dt_reserved_until) < time()) {
