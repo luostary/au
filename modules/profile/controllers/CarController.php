@@ -4,7 +4,9 @@ namespace app\modules\profile\controllers;
 
 use app\models\Car;
 use yii\data\ActiveDataProvider;
+use yii\web\Application;
 use yii\web\Controller;
+use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
@@ -115,6 +117,11 @@ class CarController extends Controller
     protected function findModel($id)
     {
         if (($model = Car::findOne(['id' => $id])) !== null) {
+            if (\Yii::$app instanceof Application && !\Yii::$app->user->isGuest) {
+                if ($model->id_user != \Yii::$app->user->id) {
+                    throw new ForbiddenHttpException(\Yii::t('app', 'Access denied'));
+                }
+            }
             return $model;
         }
 

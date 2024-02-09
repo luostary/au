@@ -18,6 +18,7 @@ use app\modules\autobasebuy\models\CarSerie;
  * @property int $id_car_generation
  * @property int $id_car_modification
  * @property int $id_car_serie
+ * @property int $id_user
  */
 class Car extends \yii\db\ActiveRecord
 {
