@@ -2,6 +2,9 @@
 
 namespace app\modules\taxi;
 
+use yii\base\Exception;
+use Yii;
+
 /**
  * Taxi module definition class
  */
@@ -19,6 +22,10 @@ class Module extends \yii\base\Module
     {
         if (!\Yii::$app->params['enableTaxiModule']) {
             throw new \yii\db\Exception('Module TaxiBot is disabled');
+        }
+
+        if (empty(Yii::$app->params['pathToTaxiBot'])) {
+            throw new Exception('Parameter pathToTaxiBot is empty');
         }
 
         parent::init();

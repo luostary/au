@@ -26,7 +26,7 @@ class menuMain extends \yii\bootstrap4\Widget
                     ['label' => Yii::t('app', 'Cabinet'), 'url' => ['/profile'], 'visible' => !Yii::$app->user->isGuest],
                     ['label' => Yii::t('app', 'My cars'), 'url' => ['/profile/car'], 'visible' => !Yii::$app->user->isGuest],
                     ['label' => Yii::t('app', 'Upload excel'), 'url' => ['/profile/excel/upload'], 'visible' => !Yii::$app->user->isGuest],
-                    ['label' => Yii::t('app', 'Taxi drivers'), 'url' => ['/taxi'], 'visible' => (!Yii::$app->user->isGuest && Yii::$app->params['enableTaxiModule'])],
+                    ['label' => Yii::t('app', 'Taxi drivers'), 'url' => ['/taxi/driver'], 'visible' => (!Yii::$app->user->isGuest && Yii::$app->params['enableTaxiModule'])],
 
                     Yii::$app->user->isGuest ? (
                     ['label' => Yii::t('app', 'Login'), 'url' => ['/user/login']]
