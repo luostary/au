@@ -57,11 +57,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     'class' => 'text-center'
                 ],
                 'value' => function ($model) {
-                    $file = 'http://localhost:8085/taxi/driver/photo-driver?id=' . $model->tg_user_id;
                     if (!$model->car_photo) {
                         return '';
                     }
-                    return '<img src="' . $file . '" alt="" style="width: 240px;">';
+                    return '<img src="/taxi/driver/photo-driver?id=' . $model->tg_user_id . '" alt="" style="width: 240px;">';
                 }
             ],
         ],
