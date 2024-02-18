@@ -57,7 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'dt_create:date',
                         'dt_update:date',
                         [
-                            'label' => 'Последнее указанное место на карте',
+                            'label' => 'Местонахождение',
                             'format' => 'html',
                             'value' => function (\app\models\Driver $model) {
                                 $href = "https://www.google.com/maps/place/" . $model->latitude . "'00.0%22N+" . $model->longitude . "'00.0%22E/@" . $model->latitude . "," . $model->longitude . ",19.7z/data=!4m4!3m3!8m2!3d35!4d33?entry=ttu";
