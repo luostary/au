@@ -37,6 +37,7 @@ return [
     'Reset' => 'Сбросить',
     'Save' => 'Сохранить',
     'Search' => 'Поиск',
+    'Taxi drivers' => 'Водители',
     'Update' => 'Обновить',
     'Upload' => 'Загрузить',
     'Upload excel' => 'Загрузить excel',
