@@ -120,11 +120,6 @@ nav.pagination span.page-numbers.current {
 	border-color:#f0280c;
 }
 
-.pagination li a {
-	padding: 0.375rem 0.75rem;
-	border: 1px solid #dee2e6;
-}
-
 /* ========================================= Theme Header. ========================================= */
 #topper {
 	background:url(images/top.jpg) top center no-repeat;
