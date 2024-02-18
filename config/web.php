@@ -69,6 +69,14 @@ $config = [
     ],
 ];
 
+if ($params['enableTaxiModule']) {
+    $dbTaxi = __DIR__ . '/private/taxi.php';
+    if (!file_exists($dbTaxi)) {
+        die('Создайте файл taxi.php тут ' . $dbTaxi);
+    }
+    $config['components']['dbTaxi'] = require $dbTaxi;
+}
+
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment
     $config['bootstrap'][] = 'debug';
