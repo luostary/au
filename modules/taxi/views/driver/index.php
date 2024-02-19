@@ -33,16 +33,16 @@ $this->params['breadcrumbs'][] = $this->title;
             //'referer_user_id',
             //'referer_payed',
             [
-                'label' => 'Фото водителя',
+                'label' => 'Фото автомобиля',
                 'format' => 'html',
                 'contentOptions' => [
                     'class' => 'text-center'
                 ],
-                'value' => function ($model) {
-                    if (!$model->car_photo) {
+                'value' => function (Driver $model) {
+                    if (!$model->hasPhotoCar()) {
                         return '';
                     }
-                    return '<img src="/taxi/driver/photo-driver?id=' . $model->tg_user_id . '" alt="" style="width: 240px;">';
+                    return '<img src="/taxi/driver/photo-car?id=' . $model->tg_user_id . '" alt="" style="width: 240px;">';
                 }
             ],
             [

@@ -14,16 +14,16 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="driver-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <table class="table table-striped">
-        <tr>
-            <td style="vertical-align: top; text-align: center;">
-                <img src="/taxi/driver/photo-driver?id=<?= $model->tg_user_id ?>" alt="" style="width: 350px;">
-                <br/>
-                <br/>
-                <img src="/taxi/driver/photo-car?id=<?= $model->tg_user_id ?>" alt="" style="width: 350px;">
-            </td>
-            <td>
-                <?= DetailView::widget([
+
+    <?php if ($model->hasPhotoDriver()) { ?>
+        <img src="/taxi/driver/photo-driver?id=<?= $model->tg_user_id ?>" alt="" style="width: 350px;">
+    <?php } ?>
+
+    <?php if ($model->hasPhotoCar()) { ?>
+    <img src="/taxi/driver/photo-car?id=<?= $model->tg_user_id ?>" alt="" style="width: 350px;">
+    <?php } ?>
+
+    <?= DetailView::widget([
                     'model' => $model,
                     'attributes' => [
                         'name:ntext',
@@ -66,7 +66,4 @@ $this->params['breadcrumbs'][] = $this->title;
                         ],
                     ],
                 ]) ?>
-            </td>
-        </tr>
-    </table>
 </div>

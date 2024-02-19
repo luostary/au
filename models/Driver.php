@@ -92,4 +92,17 @@ class Driver extends \yii\db\ActiveRecord
             'referer_payed' => Yii::t('app', 'Referer Payed'),
         ];
     }
+
+    public function hasPhotoDriver()
+    {
+        $fileName = $this->tg_user_id . '.jpg';
+        $img = \Yii::$app->params['pathToTaxiBot'] . '/drivers/' . $fileName;
+        return file_exists($img);
+    }
+    public function hasPhotoCar()
+    {
+        $fileName = $this->tg_user_id . '.jpg';
+        $img = \Yii::$app->params['pathToTaxiBot'] . '/cars/' . $fileName;
+        return file_exists($img);
+    }
 }

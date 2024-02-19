@@ -78,14 +78,11 @@ class DriverController extends Controller
         ]);
     }
 
+    // http://localhost:8085/taxi/driver/photo-driver?id=79209798
     public function actionPhotoDriver($id)
     {
-        // http://localhost:8085/taxi/driver/photo-driver?id=79209798
         $fileName = $id . '.jpg';
         $img = \Yii::$app->params['pathToTaxiBot'] . '/drivers/' . $fileName;
-        if (!file_exists($img)) {
-            throw new Exception('File not found');
-        }
         $f = fopen($img, 'r');
         \Yii::$app->response->sendStreamAsFile($f, $fileName);
     }
