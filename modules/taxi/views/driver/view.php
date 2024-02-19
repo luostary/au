@@ -16,11 +16,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <?php if ($model->hasPhotoDriver()) { ?>
-        <img src="/taxi/driver/photo-driver?id=<?= $model->tg_user_id ?>" alt="" style="width: 350px;">
+        <img src="/taxi/driver/photo-driver?id=<?= $model->tg_user_id ?>" alt="" style="height: 300px;">
     <?php } ?>
 
     <?php if ($model->hasPhotoCar()) { ?>
-    <img src="/taxi/driver/photo-car?id=<?= $model->tg_user_id ?>" alt="" style="width: 350px;">
+    <img src="/taxi/driver/photo-car?id=<?= $model->tg_user_id ?>" alt="" style="height: 300px;">
     <?php } ?>
 
     <?= DetailView::widget([
