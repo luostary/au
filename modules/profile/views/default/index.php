@@ -5,11 +5,15 @@
             <?php echo \app\widgets\menuProfile::widget() ?>
         </div>
         <div class="col-sm-10">
-            <?php
-            echo '<pre>';
-            \yii\helpers\VarDumper::dump(Yii::$app->user->identity->attributes, 3, false);
-            echo '</pre>';
-            ?>
+            <?= \yii\widgets\DetailView::widget([
+                'model' => Yii::$app->user->identity,
+                'attributes' => [
+                    'username',
+                    'email',
+                    'registration_ip',
+                    'company.name',
+                ],
+            ]); ?>
         </div>
     </div>
 </div>
