@@ -9,6 +9,7 @@ use dektrium\user\models\User as BaseUser;
  * This is the model class for table "user".
  *
  * @property int $created_at
+ * @property int $company_id
  * @property int $flags
  * @property int $id
  * @property int $updated_at
@@ -41,7 +42,7 @@ class User extends BaseUser
     {
         return [
             [['username', 'email', 'password_hash', 'auth_key', 'created_at', 'updated_at'], 'required'],
-            [['confirmed_at', 'blocked_at', 'created_at', 'updated_at', 'flags', 'last_login_at'], 'integer'],
+            [['confirmed_at', 'blocked_at', 'created_at', 'updated_at', 'flags', 'last_login_at', 'company_id'], 'integer'],
             [['username', 'email', 'unconfirmed_email'], 'string', 'max' => 255],
             [['password_hash'], 'string', 'max' => 60],
             [['auth_key'], 'string', 'max' => 32],
@@ -66,6 +67,7 @@ class User extends BaseUser
             'unconfirmed_email' => 'Unconfirmed Email',
             'blocked_at' => 'Blocked At',
             'registration_ip' => 'Registration Ip',
+            'company_id' => 'Компания',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'flags' => 'Flags',
@@ -78,9 +80,9 @@ class User extends BaseUser
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getProfile()
+    public function getCompany()
     {
-        return $this->hasOne(Profile::class, ['user_id' => 'id']);
+        return $this->hasOne(Company::class, ['id' => 'company_id']);
     }
 
     public static function findByUsername($username)
