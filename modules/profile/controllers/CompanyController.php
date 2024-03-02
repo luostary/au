@@ -12,10 +12,12 @@ class CompanyController extends \yii\web\Controller
         $companyId = $user->company_id;
 
         if (!$companyId) {
-            echo 'Вы еще не указали компанию';
+            \Yii::$app->getSession()->setFlash('warning', \Yii::t('app', 'Вам необходимо указать данные по вашей компании'));
+            $company = new Company();
+        } else {
+            $company = Company::findOne($companyId);
         }
 
-        $company = Company::findOne($companyId);
         return $this->render('index', [
             'model' => $company
         ]);
