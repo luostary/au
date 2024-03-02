@@ -15,6 +15,7 @@ class menuProfile extends \yii\bootstrap4\Widget
     {
         $items = [
             ['label' => Yii::t('app', 'My cars'), 'url' => ['/profile/car']],
+            ['label' => Yii::t('app', 'Company'), 'url' => ['/profile/company']],
             ['label' => Yii::t('app', 'Upload excel'), 'url' => ['/profile/excel/upload']],
         ];
 

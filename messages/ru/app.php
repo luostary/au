@@ -24,6 +24,7 @@ return [
     'Catalog' => 'Каталог',
     'Captcha' => 'Введите проверочный код',
     'Contact Us' => 'Написать нам',
+    'Company' => 'Компания',
     'Create' => 'Создать',
     'Delete' => 'Удалить',
     'Description' => 'Описание',
