@@ -59,19 +59,19 @@ class User extends BaseUser
     {
         return [
             'id' => 'ID',
-            'username' => 'Username',
-            'email' => 'Email',
+            'username' => 'Логин',
+            'email' => 'Электронная почта',
             'password_hash' => 'Password Hash',
-            'auth_key' => 'Auth Key',
-            'confirmed_at' => 'Confirmed At',
-            'unconfirmed_email' => 'Unconfirmed Email',
-            'blocked_at' => 'Blocked At',
-            'registration_ip' => 'Registration Ip',
+            'auth_key' => 'Ключ аутентификации',
+            'confirmed_at' => 'Дата подтверждения',
+            'unconfirmed_email' => 'Не подтвержденная электронная почта',
+            'blocked_at' => 'Дата блокировки',
+            'registration_ip' => 'IP адрес регистрации',
             'company_id' => 'Компания',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'flags' => 'Flags',
-            'last_login_at' => 'Last Login At',
+            'created_at' => 'Дата создания',
+            'updated_at' => 'Дата изменения',
+            'flags' => 'Флаги',
+            'last_login_at' => 'Время последнего входа',
         ];
     }
 

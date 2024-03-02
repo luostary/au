@@ -44,7 +44,7 @@ class Company extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'name' => Yii::t('app', 'Наименование'),
+            'name' => Yii::t('app', 'Наименование компании'),
             'address' => Yii::t('app', 'Адрес'),
             'is_active' => Yii::t('app', 'Активна'),
             'dt_create' => Yii::t('app', 'Дата создания'),
