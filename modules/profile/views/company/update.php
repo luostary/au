@@ -11,6 +11,8 @@
 
 <?= $form->field($model, 'address')->textarea(['rows' => 4]); ?>
 
+<?= $form->field($model, 'is_active')->checkbox(); ?>
+
 <input type="submit">
 
 <?php \yii\widgets\ActiveForm::end(); ?>
